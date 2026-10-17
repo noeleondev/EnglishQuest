@@ -1,0 +1,119 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   theme_default.css — Tema Cyberpunk / Neón Oscuro
+   Paleta: fondo negro azulado, acento cian eléctrico, texto blanco frío
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Tipografía ── */
+  --font-body:    'Inter', system-ui, sans-serif;
+  --font-display: 'JetBrains Mono', monospace;
+
+  /* ── Fondos ── */
+  --bg-base:          #0d0f1a;
+  --bg-panel:         #111323;
+  --bg-panel-header:  #0f1120;
+  --bg-header:        #0a0c15;
+  --bg-surface:       #161929;
+  --bg-surface-active:#1a2040;
+
+  /* ── Bordes ── */
+  --border: #252a45;
+
+  /* ── Texto ── */
+  --text-primary:   #e8eaf6;
+  --text-secondary: #9ba5c9;
+  --text-muted:     #5a6285;
+
+  /* ── Acento principal ── */
+  --accent: #00e5ff;
+
+  /* ── Efectos de brillo (glow) ── */
+  --glow-accent:        0 0  8px rgba(0, 229, 255, 0.35);
+  --glow-accent-strong: 0 0 18px rgba(0, 229, 255, 0.65), 0 0 4px rgba(0, 229, 255, 0.4);
+
+  /* ── Colores semánticos ── */
+  --color-success: #39ff7e;
+  --color-warning: #ffcc00;
+  --color-danger:  #ff3d71;
+  --color-fire:    #ff6b2b;
+
+  /* ── Filtro para iconos de zona completa ── */
+  --filter-complete: drop-shadow(0 0 6px #39ff7e);
+
+  /* ── Decoraciones flotantes del tema ── */
+  --deco-symbols: "⚡" "🔷" "◈" "▸" "⬡";
+  --deco-duration: 6s;
+}
+
+/* Decoraciones flotantes específicas del tema Cyberpunk */
+body[data-theme="theme_default"]::before,
+body[data-theme="theme_default"]::after {
+  content: '';
+  /* Las decos las genera JS con divs .theme-deco */
+}
+
+/* Scrollbar del tema */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #252a45 #0d0f1a;
+}
+
+*::-webkit-scrollbar       { width: 6px; height: 6px; }
+*::-webkit-scrollbar-track { background: #0d0f1a; }
+*::-webkit-scrollbar-thumb { background: #252a45; border-radius: 3px; }
+*::-webkit-scrollbar-thumb:hover { background: #00e5ff55; }
+
+/* Líneas de escaneo sutiles (CRT effect) */
+body[data-theme="theme_default"] {
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 229, 255, 0.015) 2px,
+      rgba(0, 229, 255, 0.015) 4px
+    );
+}
+
+/* Cursor personalizado en botones */
+body[data-theme="theme_default"] .btn-primary {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Zona activa: highlight lateral cian */
+body[data-theme="theme_default"] .zone-card.zone-active {
+  border-left: 3px solid var(--accent);
+}
+
+/* Phase cards: borde izquierdo coloreado por fase */
+body[data-theme="theme_default"] .phase-card[data-phase="f1"]     { border-left: 3px solid #00e5ff; }
+body[data-theme="theme_default"] .phase-card[data-phase="f2"]     { border-left: 3px solid #a78bfa; }
+body[data-theme="theme_default"] .phase-card[data-phase="f3"]     { border-left: 3px solid #34d399; }
+body[data-theme="theme_default"] .phase-card[data-phase="jefe"]   { border-left: 3px solid #ff3d71; }
+
+/* Header title: efecto glitch en hover */
+body[data-theme="theme_default"] .header-title:hover {
+  animation: glitch 0.4s steps(2) 1;
+}
+
+@keyframes glitch {
+  0%   { text-shadow:  2px 0 #ff00ff, -2px 0 #00e5ff; }
+  25%  { text-shadow: -2px 0 #ff00ff,  2px 0 #00e5ff; }
+  50%  { text-shadow:  2px 2px #ff00ff, -2px -2px #00e5ff; }
+  75%  { text-shadow: -2px 2px #ff00ff,  2px -2px #00e5ff; }
+  100% { text-shadow: var(--glow-accent); }
+}
+
+/* ── Overrides del modal y dropdown para tema Cyberpunk ──────────────────── */
+body[data-theme="theme_default"] .modal-box {
+  box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 30px rgba(0, 229, 255, 0.2);
+}
+
+body[data-theme="theme_default"] .user-btn:not(.user-btn-empty) {
+  border-color: rgba(0, 229, 255, 0.4);
+}
+
+body[data-theme="theme_default"] .modal-tab.active {
+  text-shadow: 0 0 8px rgba(0,0,0,0.5);
+}

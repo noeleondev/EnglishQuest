@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>English Quest — Mr. León</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Estilos base (layout, reset, componentes) -->
+  <link rel="stylesheet" href="styles/base.css" />
+
+  <!-- Tema activo — se inyecta dinámicamente por theme_manager.js.
+       El fallback es theme_default para el primer render. -->
+  <link id="theme-stylesheet" rel="stylesheet" href="styles/theme_default.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       HEADER
+  ═══════════════════════════════════════════════════════════ -->
+  <header class="app-header">
+    <div class="header-brand">
+      <span class="header-icon" id="header-icon" aria-hidden="true">⚔️</span>
+      <h1 class="header-title">English Quest</h1>
+      <span class="header-subtitle">Nivel 0 — Mr. León</span>
+    </div>
+
+    <div class="header-center">
+      <div class="xp-badge" id="xp-badge" title="XP Total acumulado">
+        <span class="xp-label">XP</span>
+        <span class="xp-value" id="header-xp">–</span>
+      </div>
+    </div>
+
+    <div class="header-controls">
+      <!-- Botón de usuario -->
+      <div class="user-menu" id="user-menu">
+        <button class="user-btn user-btn-empty" id="user-btn"
+                aria-haspopup="true" aria-expanded="false"
+                aria-label="Menú de usuario">
+          <span class="user-btn-avatar" id="user-btn-avatar">👤</span>
+          <span class="user-btn-name"   id="user-btn-name">Iniciar sesión</span>
+          <span class="user-btn-caret"  aria-hidden="true">▾</span>
+        </button>
+
+        <!-- Dropdown de usuario -->
+        <div class="user-dropdown hidden" id="user-dropdown" role="menu">
+          <button class="dd-item" id="dd-cambiar" role="menuitem">🔄 Cambiar usuario</button>
+          <button class="dd-item" id="dd-nuevo"   role="menuitem">➕ Crear nuevo</button>
+          <div class="dd-sep"></div>
+          <button class="dd-item" id="dd-reiniciar" role="menuitem">🔁 Reiniciar progreso</button>
+          <button class="dd-item dd-item-danger" id="dd-eliminar" role="menuitem">🗑️ Eliminar usuario</button>
+        </div>
+      </div>
+
+      <!-- Selector de tema -->
+      <div class="theme-selector">
+        <label for="theme-select" class="visually-hidden">Tema</label>
+        <select id="theme-select" class="theme-dropdown" aria-label="Seleccionar tema">
+          <option value="theme_default">🌌 Cyberpunk</option>
+          <option value="theme_halloween">🎃 Halloween</option>
+          <option value="theme_christmas">❄️ Christmas</option>
+          <option value="__surprise_toggle__" id="surprise-option">🎲 Sorpresa: ON</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       MODAL DE BIENVENIDA / GESTIÓN DE USUARIO
+  ═══════════════════════════════════════════════════════════ -->
+  <div class="modal-backdrop hidden" id="user-modal" role="dialog"
+       aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span class="modal-icon" aria-hidden="true">⚔️</span>
+        <h2 class="modal-title" id="modal-title">English Quest</h2>
+        <p class="modal-subtitle">¿Quién juega hoy?</p>
+      </div>
+
+      <!-- Tabs: Crear / Cargar -->
+      <div class="modal-tabs" role="tablist">
+        <button class="modal-tab active" id="modal-tab-crear"
+                data-panel="modal-panel-crear" role="tab" aria-selected="true">
+          ✨ Nuevo jugador
+        </button>
+        <button class="modal-tab" id="modal-tab-cargar"
+                data-panel="modal-panel-cargar" role="tab" aria-selected="false">
+          📂 Continuar
+        </button>
+      </div>
+
+      <!-- Panel: Crear usuario -->
+      <div class="modal-tab-panel" id="modal-panel-crear">
+        <form id="modal-crear-form" autocomplete="off" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="modal-nombre-input">Nombre de usuario</label>
+            <input class="form-input" id="modal-nombre-input" type="text"
+                   placeholder="Mr_Leon" maxlength="20"
+                   pattern="[A-Za-z0-9_]{2,20}" required
+                   aria-describedby="modal-nombre-hint" />
+            <span class="form-hint" id="modal-nombre-hint">
+              Solo letras, números y _ · 2–20 caracteres
+            </span>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="modal-display-input">Nombre para mostrar (opcional)</label>
+            <input class="form-input" id="modal-display-input" type="text"
+                   placeholder="Mr. León" maxlength="40" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Elige tu avatar</label>
+            <div class="avatar-grid" id="modal-avatares"></div>
+          </div>
+          <button type="submit" class="btn btn-primary modal-submit-btn">
+            ⚔️ ¡Comenzar aventura!
+          </button>
+        </form>
+      </div>
+
+      <!-- Panel: Cargar usuario existente -->
+      <div class="modal-tab-panel hidden" id="modal-panel-cargar">
+        <div class="form-group">
+          <label class="form-label" for="modal-usuario-existente">Selecciona tu perfil</label>
+          <select class="form-input" id="modal-usuario-existente">
+            <option value="">— Cargando… —</option>
+          </select>
+        </div>
+        <button class="btn btn-primary modal-submit-btn" id="modal-cargar-btn" disabled>
+          📂 Continuar aventura
+        </button>
+      </div>
+
+      <!-- Zona de confirmación de borrado (oculta por defecto) -->
+      <div class="confirm-delete hidden" id="confirm-delete-wrap">
+        <p class="confirm-delete-msg">
+          ⚠️ Esta acción es <strong>irreversible</strong>. Escribe <code>BORRAR</code> para confirmar.
+        </p>
+        <div class="confirm-delete-row">
+          <input class="form-input" id="confirm-delete-input" type="text"
+                 placeholder="BORRAR" maxlength="6" />
+          <button class="btn btn-danger" id="confirm-delete-btn">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       MAIN LAYOUT (3 columnas)
+  ═══════════════════════════════════════════════════════════ -->
+  <main class="app-layout">
+
+    <!-- ── PANEL IZQUIERDO: mapa de zonas ── -->
+    <aside class="panel panel-left" aria-label="Mapa de zonas">
+      <div class="panel-header">
+        <h2 class="panel-title">
+          <span class="panel-icon" aria-hidden="true">🗺️</span>
+          Mapa de Zonas
+        </h2>
+      </div>
+
+      <!-- Zonas se generan dinámicamente por app.js -->
+      <div class="zone-map" id="zone-map">
+        <div class="loading-state" id="zone-map-loading">
+          <span class="spinner" aria-hidden="true"></span>
+          Cargando zonas…
+        </div>
+      </div>
+    </aside>
+
+    <!-- ── PANEL CENTRAL: área de juego ── -->
+    <section class="panel panel-center" aria-label="Área de juego">
+      <div class="panel-header">
+        <h2 class="panel-title" id="play-title">
+          <span class="panel-icon" aria-hidden="true">🎮</span>
+          Área de Juego
+        </h2>
+      </div>
+
+      <!-- Estado inicial / placeholder -->
+      <div class="play-area" id="play-area">
+        <div class="welcome-card" id="welcome-card">
+          <div class="welcome-icon" aria-hidden="true" id="welcome-icon">⚔️</div>
+          <h3 class="welcome-heading">¡Bienvenido, Aventurero!</h3>
+          <p class="welcome-text">
+            Selecciona una zona del mapa para comenzar tu aventura.<br />
+            Completa todas las fases de cada zona para desbloquear la siguiente.
+          </p>
+          <div class="welcome-stats" id="welcome-stats">
+            <!-- Stats rápidas se inyectan desde app.js -->
+          </div>
+        </div>
+
+        <!-- Área de detalle de zona (oculta hasta que se seleccione una) -->
+        <div class="zone-detail hidden" id="zone-detail">
+          <div class="zone-detail-header">
+            <h3 class="zone-detail-name" id="detail-name">–</h3>
+            <div class="zone-detail-badges">
+              <span class="badge badge-xp" id="detail-xp">0 XP</span>
+              <span class="badge badge-progress" id="detail-progress">0%</span>
+            </div>
+          </div>
+
+          <!-- Fases de la zona -->
+          <div class="phase-grid" id="phase-grid">
+            <!-- Generado por app.js -->
+          </div>
+
+          <!-- Botón jugar -->
+          <button class="btn btn-primary btn-play" id="btn-play" disabled>
+            <span aria-hidden="true">▶</span> Selecciona una fase
+          </button>
+
+          <div class="play-output hidden" id="play-output">
+            <h4 class="output-title">Resultado</h4>
+            <pre class="output-pre" id="output-pre"></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PANEL DERECHO: estadísticas globales ── -->
+    <aside class="panel panel-right" aria-label="Estadísticas globales">
+      <div class="panel-header">
+        <h2 class="panel-title">
+          <span class="panel-icon" aria-hidden="true">📊</span>
+          Estadísticas
+        </h2>
+      </div>
+
+      <div class="stats-grid" id="stats-grid">
+        <div class="loading-state">
+          <span class="spinner" aria-hidden="true"></span>
+          Cargando…
+        </div>
+      </div>
+
+      <!-- Racha global -->
+      <div class="streak-display" id="streak-display" style="display:none">
+        <span class="streak-icon" aria-hidden="true">🔥</span>
+        <div>
+          <div class="streak-value" id="streak-value">0</div>
+          <div class="streak-label">Racha máxima</div>
+        </div>
+      </div>
+
+      <!-- Barra visual de racha -->
+      <div class="streak-bar-wrap" id="streak-bar-wrap">
+        <div class="streak-bar-label">
+          <span>🔥 Racha</span>
+          <span id="streak-bar-count">0</span>
+        </div>
+        <div class="streak-bar-track">
+          <div class="streak-bar-fill" id="streak-bar-fill" style="width:0%"></div>
+        </div>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════════════ -->
+  <footer class="app-footer">
+    <span>English Quest — Nivel 0</span>
+    <span class="footer-sep" aria-hidden="true">·</span>
+    <span>Servidor Flask en localhost:5000</span>
+    <span class="footer-watermark">Creado por Mr. León</span>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SCRIPTS (orden: theme_manager primero para evitar FOUC)
+  ═══════════════════════════════════════════════════════════ -->
+  <script src="scripts/theme_manager.js"></script>
+  <script src="scripts/user_manager.js"></script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

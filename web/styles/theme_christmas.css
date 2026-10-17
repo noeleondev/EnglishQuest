@@ -1,0 +1,165 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   theme_christmas.css — Tema Navidad ❄️
+   Paleta: fondo verde pino oscuro, acentos rojo festivo, destellos plateados
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Tipografía ── */
+  --font-body:    'Inter', system-ui, sans-serif;
+  --font-display: 'JetBrains Mono', monospace;
+
+  /* ── Fondos ── */
+  --bg-base:          #050f09;
+  --bg-panel:         #08160d;
+  --bg-panel-header:  #061209;
+  --bg-header:        #040d07;
+  --bg-surface:       #0d1f12;
+  --bg-surface-active:#102819;
+
+  /* ── Bordes ── */
+  --border: #1a3520;
+
+  /* ── Texto ── */
+  --text-primary:   #e8f5e9;
+  --text-secondary: #a5c8a8;
+  --text-muted:     #4d7a55;
+
+  /* ── Acento principal: rojo navideño ── */
+  --accent: #ff3a3a;
+
+  /* ── Efectos de brillo ── */
+  --glow-accent:        0 0  8px rgba(255, 58, 58, 0.4);
+  --glow-accent-strong: 0 0 20px rgba(255, 58, 58, 0.65), 0 0 6px rgba(255, 58, 58, 0.35);
+
+  /* ── Colores semánticos ── */
+  --color-success: #69ff85;   /* verde brillante */
+  --color-warning: #ffd700;   /* dorado */
+  --color-danger:  #ff1a1a;
+  --color-fire:    #ff6600;
+
+  /* ── Filtro iconos completos ── */
+  --filter-complete: drop-shadow(0 0 6px #69ff85);
+
+  /* ── Decoraciones ── */
+  --deco-duration: 7s;
+}
+
+/* Scrollbar verde pino */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #1a3520 #050f09;
+}
+
+*::-webkit-scrollbar       { width: 6px; height: 6px; }
+*::-webkit-scrollbar-track { background: #050f09; }
+*::-webkit-scrollbar-thumb { background: #1a3520; border-radius: 3px; }
+*::-webkit-scrollbar-thumb:hover { background: #ff3a3a55; }
+
+/* Fondo con gradiente de noche nevada */
+body[data-theme="theme_christmas"] {
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(255, 58, 58, 0.05) 0%, transparent 45%),
+    radial-gradient(ellipse at 80% 90%, rgba(0, 200, 80, 0.05) 0%, transparent 45%);
+}
+
+/* Header con sombra rojiza */
+body[data-theme="theme_christmas"] .app-header {
+  box-shadow: 0 2px 20px rgba(255, 58, 58, 0.12);
+}
+
+/* Zona activa: borde rojo izquierdo */
+body[data-theme="theme_christmas"] .zone-card.zone-active {
+  border-left: 3px solid var(--accent);
+}
+
+/* Fases con colores navideños */
+body[data-theme="theme_christmas"] .phase-card[data-phase="f1"]   { border-left: 3px solid #ff3a3a; }
+body[data-theme="theme_christmas"] .phase-card[data-phase="f2"]   { border-left: 3px solid #ffd700; }
+body[data-theme="theme_christmas"] .phase-card[data-phase="f3"]   { border-left: 3px solid #69ff85; }
+body[data-theme="theme_christmas"] .phase-card[data-phase="jefe"] { border-left: 3px solid #ffffff; }
+
+/* XP badge con brillo dorado */
+body[data-theme="theme_christmas"] .xp-badge {
+  border-color: #ffd700;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.35);
+}
+
+body[data-theme="theme_christmas"] .xp-value {
+  color: #ffd700;
+}
+
+/* Animación de copos de nieve en el icono del header */
+body[data-theme="theme_christmas"] .header-icon {
+  animation: snowfall 5s ease-in-out infinite;
+}
+
+@keyframes snowfall {
+  0%, 100% { transform: translateY(0) rotate(0deg);   }
+  33%       { transform: translateY(-6px) rotate(10deg); }
+  66%       { transform: translateY(-3px) rotate(-6deg); }
+}
+
+/* Welcome card festiva */
+body[data-theme="theme_christmas"] .welcome-card {
+  border: 1px solid rgba(255, 58, 58, 0.25);
+  border-radius: 14px;
+  background: rgba(255, 58, 58, 0.04);
+  padding: 2rem;
+}
+
+/* Brillo dorado en hover de zona */
+body[data-theme="theme_christmas"] .zone-card:hover:not(.zone-locked) {
+  box-shadow: 0 0 14px rgba(255, 215, 0, 0.3);
+  border-color: #ffd700;
+}
+
+/* Header title rojo/dorado */
+body[data-theme="theme_christmas"] .header-title {
+  color: #ff3a3a;
+  text-shadow: 0 0 12px rgba(255, 58, 58, 0.6), 0 0 30px rgba(255, 215, 0, 0.2);
+}
+
+/* Botón primario: gradiente festivo */
+body[data-theme="theme_christmas"] .btn-primary {
+  background: linear-gradient(135deg, #ff3a3a 0%, #c00 100%);
+}
+
+/* Stat cards con acento dorado en valor */
+body[data-theme="theme_christmas"] .stat-card-value {
+  color: #ffd700;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+
+/* ── Overrides del modal y dropdown para tema Christmas ──────────────────── */
+body[data-theme="theme_christmas"] .modal-box {
+  box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 30px rgba(255, 58, 58, 0.2);
+  border-color: rgba(255, 58, 58, 0.3);
+}
+
+body[data-theme="theme_christmas"] .modal-tab.active {
+  background: #ff3a3a;
+  border-color: #ff3a3a;
+}
+
+body[data-theme="theme_christmas"] .form-input:focus {
+  border-color: #ff3a3a;
+  box-shadow: 0 0 8px rgba(255, 58, 58, 0.4);
+}
+
+body[data-theme="theme_christmas"] .avatar-btn.selected {
+  border-color: #ffd700;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+  background: rgba(255, 215, 0, 0.1);
+}
+
+body[data-theme="theme_christmas"] .user-btn:not(.user-btn-empty) {
+  border-color: rgba(255, 58, 58, 0.4);
+}
+
+body[data-theme="theme_christmas"] .footer-watermark {
+  color: rgba(255, 215, 0, 0.5);
+}
+
+body[data-theme="theme_christmas"] .modal-title {
+  color: #ff3a3a;
+}
