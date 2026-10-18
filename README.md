@@ -1,56 +1,42 @@
-\# 🎮 English Quest (A0 a C2)
+# 🎮 English Quest (A0 a C2)
 
+**English Quest** es una plataforma web de práctica y gamificación diseñada para reforzar el vocabulario y la gramática del inglés, desde el nivel principiante (A0) hasta avanzado (C2). 
 
+> **⚠️ Nota importante:** Este proyecto **NO** incluye el material de estudio teórico ni el libro de texto original. English Quest es una herramienta **complementaria**. El usuario debe aprender el vocabulario por su cuenta (usando videos, libros, apps, etc.) y utilizar esta plataforma para **practicar, medir su progreso y gamificar su estudio**.
 
-\*\*English Quest\*\* es una aplicación web gamificada diseñada para aprender inglés desde cero (Nivel 0) hasta avanzado (C2). Está construida para personas que odian el aprendizaje pasivo y necesitan estimulación visual, recompensas y progresión tipo videojuego.
+## 🚀 ¿Cómo funciona el juego?
+El sistema está dividido por **Zonas de conocimiento** (Colores, Números, Verbos, etc.). Cada zona tiene un sistema de recompensas tipo RPG y se divide en 4 fases:
 
+1. **Fase 1 — Reconocimiento:** Opción múltiple. Relaciona la traducción con la palabra.
+2. **Fase 2 — Producción:** Escritura. Escribe la palabra en inglés.
+3. **Fase 3 — Inverso:** Escribe la pronunciación y la traducción en base a la palabra en inglés.
+4. **JEFE — Dictado:** Prueba final cronometrada.
 
+## 🛠️ Tecnologías
+- **Backend:** Python + Flask
+- **Frontend:** HTML5, CSS3, JavaScript (Vanilla)
+- **Arquitectura:** Modular (cada zona es independiente).
 
-\## 🚀 Características
+## ⚙️ Instalación y uso
 
+1. Clona este repositorio:
+   ```bash
+   git clone https://github.com/noeleondev/EnglishQuest.git
+   cd EnglishQuest
+Instala Flask:
 
+bash
+pip install flask
+Ejecuta el servidor:
 
-\- \*\*Sistema de progreso RPG:\*\* Gana XP, mantén rachas y desbloquea zonas.
+bash
+python servidor.py
+Abre tu navegador en http://localhost:5000
 
-\- \*\*4 fases de aprendizaje por zona:\*\*
+🎯 Estado del proyecto
+☑ Nivel 0: Vocabulario (11 zonas) y Gramática (6 temas) — Completado
+□ Nivel A1: En desarrollo...
+□ Niveles A2 a C2: Planificados.
 
-&#x20; - F1: Reconocimiento (opción múltiple)
-
-&#x20; - F2: Producción (escribir al inglés)
-
-&#x20; - F3: Inverso (escribir pronunciación y traducción)
-
-&#x20; - JEFE: Dictado / Reto final
-
-\- \*\*Multi-usuario:\*\* Diferentes perfiles pueden guardar su propio progreso en el mismo equipo.
-
-\- \*\*6 Temas visuales:\*\* Incluye modo oscuro, cyberpunk, halloween, navidad, verano y minimalista.
-
-\- \*\*100% Local:\*\* Todo corre en tu computadora usando Python y Flask.
-
-
-
-\## 🛠️ Tecnologías
-
-
-
-\- \*\*Backend:\*\* Python 3 + Flask
-
-\- \*\*Frontend:\*\* HTML5, CSS3 (Vanilla), JavaScript (Vanilla)
-
-\- \*\*Arquitectura:\*\* Modular (cada zona tiene sus propios datos y motor de juego)
-
-
-
-\## ⚙️ Cómo ejecutar el proyecto en tu PC
-
-
-
-1\. Clona este repositorio:
-
-&#x20;  ```bash
-
-&#x20;  git clone https://github.com/noeleondev/EnglishQuest.git
-
-&#x20;  cd EnglishQuest
-
+👨‍💻 Autor
+Desarrollado por Noe León (@noeleondev).
