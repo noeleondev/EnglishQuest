@@ -41,3 +41,22 @@ def obtener_todas_las_palabras():
     for sid in ORDEN_SECCIONES:
         todas.extend(SECCIONES[sid]["palabras"])
     return todas
+
+TEORIA = {
+    "titulo": "Los Colores (Colors)",
+    "explicacion": "Los colores en inglés son adjetivos, así que no cambian según el género. Cuando quieras decir 'un carro rojo', dirás 'a red car' (el color va antes del sustantivo).",
+    "tabla": [
+        {"en": "red", "pron": "red", "es": "rojo"},
+        {"en": "blue", "pron": "blu", "es": "azul"},
+        {"en": "green", "pron": "grin", "es": "verde"},
+        {"en": "yellow", "pron": "iélou", "es": "amarillo"},
+        {"en": "orange", "pron": "óranchn", "es": "naranja"},
+        {"en": "purple", "pron": "pérpol", "es": "morado"},
+        {"en": "pink", "pron": "pink", "es": "rosa"},
+        {"en": "black", "pron": "blak", "es": "negro"},
+        {"en": "white", "pron": "uáit", "es": "blanco"},
+        {"en": "brown", "pron": "bráun", "es": "café / marrón"},
+        {"en": "gray", "pron": "gréi", "es": "gris"},
+        {"en": "gold", "pron": "gold", "es": "dorado"}
+    ]
+}

@@ -31,3 +31,17 @@ def obtener_todas_las_palabras():
     for sid in ORDEN_SECCIONES:
         todas.extend(SECCIONES[sid]["palabras"])
     return todas
+
+TEORIA = {
+    "titulo": "Los Días de la Semana (Days of the Week)",
+    "explicacion": "En inglés, los días de la semana SIEMPRE se escriben con mayúscula inicial. La semana en inglés (especialmente en EE.UU.) empieza en domingo, aunque el lunes es el primer día laboral. Cuando dices 'el lunes', usas la preposición 'on': 'on Monday'.",
+    "tabla": [
+        {"en": "Monday", "pron": "móndei", "es": "lunes"},
+        {"en": "Tuesday", "pron": "tiúsdei", "es": "martes"},
+        {"en": "Wednesday", "pron": "uénsdei", "es": "miércoles"},
+        {"en": "Thursday", "pron": "zérsdei", "es": "jueves"},
+        {"en": "Friday", "pron": "fráidei", "es": "viernes"},
+        {"en": "Saturday", "pron": "sáturdei", "es": "sábado"},
+        {"en": "Sunday", "pron": "sóndei", "es": "domingo"}
+    ]
+}

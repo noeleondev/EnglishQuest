@@ -47,3 +47,20 @@ def obtener_todas_las_palabras():
     for sid in ORDEN_SECCIONES:
         todas.extend(SECCIONES[sid]["palabras"])
     return todas
+
+TEORIA = {
+    "titulo": "La Familia (Family)",
+    "explicacion": "El inglés es más específico que el español aquí. En lugar de decir 'mi tío' (que puede ser hermano de papá o mamá), se usa 'uncle' para ambos, pero hay palabras exactas para 'sobrino' (nephew) o 'primo' (cousin). Ojo: 'Parents' significa 'padres' (papá y mamá), NO 'parientes' (esos son 'relatives').",
+    "tabla": [
+        {"en": "Mother / Mom", "pron": "móder / mom", "es": "madre / mamá"},
+        {"en": "Father / Dad", "pron": "fáder / dad", "es": "padre / papá"},
+        {"en": "Parents", "pron": "pérents", "es": "padres"},
+        {"en": "Brother", "pron": "bróder", "es": "hermano"},
+        {"en": "Sister", "pron": "síster", "es": "hermana"},
+        {"en": "Grandmother", "pron": "granmóder", "es": "abuela"},
+        {"en": "Grandfather", "pron": "granfáder", "es": "abuelo"},
+        {"en": "Aunt", "pron": "ant", "es": "tía"},
+        {"en": "Uncle", "pron": "óncol", "es": "tío"},
+        {"en": "Cousin", "pron": "cózin", "es": "primo / prima"}
+    ]
+}

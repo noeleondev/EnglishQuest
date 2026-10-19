@@ -40,3 +40,22 @@ def obtener_todas_las_palabras():
     for sid in ORDEN_SECCIONES:
         todas.extend(SECCIONES[sid]["palabras"])
     return todas
+
+TEORIA = {
+    "titulo": "Objetos Comunes (Common Objects)",
+    "explicacion": "Este es vocabulario fundamental para el salón de clases y la oficina. Ojo con el falso amigo 'Carpet', que significa 'alfombra' (no carpeta, que es 'folder'). Y 'Phone' es el teléfono (viene de telephone).",
+    "tabla": [
+        {"en": "Table", "pron": "téibol", "es": "mesa"},
+        {"en": "Chair", "pron": "cher", "es": "silla"},
+        {"en": "Book", "pron": "buk", "es": "libro"},
+        {"en": "Pen", "pron": "pen", "es": "bolígrafo / pluma"},
+        {"en": "Pencil", "pron": "pénsol", "es": "lápiz"},
+        {"en": "Door", "pron": "dor", "es": "puerta"},
+        {"en": "Window", "pron": "uíndou", "es": "ventana"},
+        {"en": "Phone", "pron": "fóun", "es": "teléfono"},
+        {"en": "Computer", "pron": "compúiter", "es": "computadora"},
+        {"en": "Bed", "pron": "bed", "es": "cama"},
+        {"en": "House", "pron": "jáus", "es": "casa"},
+        {"en": "Key", "pron": "ki", "es": "llave"}
+    ]
+}

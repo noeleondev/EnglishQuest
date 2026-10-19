@@ -36,3 +36,22 @@ def obtener_todas_las_palabras():
     for sid in ORDEN_SECCIONES:
         todas.extend(SECCIONES[sid]["palabras"])
     return todas
+
+TEORIA = {
+    "titulo": "Los Meses del Año (Months of the Year)",
+    "explicacion": "Al igual que los días, los meses se escriben con mayúscula inicial. Cuando hablas de algo que pasó en un mes específico, usas la preposición 'in': 'in May' (en mayo).",
+    "tabla": [
+        {"en": "January", "pron": "yánueri", "es": "enero"},
+        {"en": "February", "pron": "fébrueri", "es": "febrero"},
+        {"en": "March", "pron": "march", "es": "marzo"},
+        {"en": "April", "pron": "éiprol", "es": "abril"},
+        {"en": "May", "pron": "méi", "es": "mayo"},
+        {"en": "June", "pron": "yun", "es": "junio"},
+        {"en": "July", "pron": "yulái", "es": "julio"},
+        {"en": "August", "pron": "ógosta", "es": "agosto"},
+        {"en": "September", "pron": "septémber", "es": "septiembre"},
+        {"en": "October", "pron": "octóuber", "es": "octubre"},
+        {"en": "November", "pron": "novémber", "es": "noviembre"},
+        {"en": "December", "pron": "disémber", "es": "diciembre"}
+    ]
+}

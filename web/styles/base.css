@@ -1582,3 +1582,70 @@ a:hover { text-decoration: underline; }
   .resumen-stats { grid-template-columns: repeat(2, 1fr); }
   .opcion-btn    { font-size: 0.92rem; padding: 0.65rem 0.9rem; }
 }
+
+/* Estilos para el Modal de Teoría */
+.btn-teoria {
+    background-color: #e94560;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 20px;
+    font-weight: bold;
+    transition: transform 0.2s, background 0.2s;
+}
+.btn-teoria:hover {
+    background-color: #c73652;
+    transform: scale(1.02);
+}
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.modal-content {
+    background: #16213e;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    color: white;
+    border: 2px solid #0f3460;
+    box-shadow: 0 0 20px rgba(233, 69, 96, 0.3);
+}
+.tabla-teoria {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+.tabla-teoria th, .tabla-teoria td {
+    padding: 10px;
+    border-bottom: 1px solid #2a2a4e;
+    text-align: left;
+}
+.tabla-teoria th {
+    color: #00d4ff;
+}
+.btn-cerrar {
+    background: #0f3460;
+    color: white;
+    border: 1px solid #00d4ff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    width: 100%;
+}
+.btn-cerrar:hover {
+    background: #00d4ff;
+    color: #000;
+}

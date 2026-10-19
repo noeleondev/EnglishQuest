@@ -51,3 +51,23 @@ def obtener_todas_las_palabras():
     for sid in ORDEN_SECCIONES:
         todas.extend(SECCIONES[sid]["palabras"])
     return todas
+
+
+TEORIA = {
+    "titulo": "Adjetivos Básicos (Basic Adjectives)",
+    "explicacion": "En inglés, los adjetivos NO tienen género (no hay 'rojo/roja', solo 'red') y NO cambian en plural. Además, siempre van ANTES del sustantivo: 'Un carro rápido' es 'A fast car' (no 'a car fast').",
+    "tabla": [
+        {"en": "Big", "pron": "big", "es": "grande"},
+        {"en": "Small", "pron": "smol", "es": "pequeño"},
+        {"en": "Good", "pron": "gud", "es": "bueno"},
+        {"en": "Bad", "pron": "bad", "es": "malo"},
+        {"en": "Hot", "pron": "jot", "es": "caliente"},
+        {"en": "Cold", "pron": "cóuld", "es": "frío"},
+        {"en": "New", "pron": "niu", "es": "nuevo"},
+        {"en": "Old", "pron": "óuld", "es": "viejo"},
+        {"en": "Happy", "pron": "jápi", "es": "feliz"},
+        {"en": "Sad", "pron": "sad", "es": "triste"},
+        {"en": "Fast", "pron": "fast", "es": "rápido"},
+        {"en": "Slow", "pron": "slóu", "es": "lento"}
+    ]
+}

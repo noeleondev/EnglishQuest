@@ -48,3 +48,19 @@ def obtener_todas_las_palabras():
     for sid in ORDEN_SECCIONES:
         todas.extend(SECCIONES[sid]["palabras"])
     return todas
+
+TEORIA = {
+    "titulo": "Saludos y Despedidas (Greetings)",
+    "explicacion": "En inglés, la hora del día determina el saludo. 'Good morning' se usa antes del mediodía, 'Good afternoon' de mediodía a 6 pm, y 'Good evening' después de 6 pm. Para despedirte por la noche dices 'Good night'. 'How are you?' es la pregunta estándar.",
+    "tabla": [
+        {"en": "Hello", "pron": "jelóu", "es": "hola"},
+        {"en": "Good morning", "pron": "gud mórnin", "es": "buenos días"},
+        {"en": "Good afternoon", "pron": "gud afternún", "es": "buenas tardes"},
+        {"en": "Good evening", "pron": "gud ívnin", "es": "buenas noches (al llegar)"},
+        {"en": "Good night", "pron": "gud náit", "es": "buenas noches (al despedirse)"},
+        {"en": "How are you?", "pron": "jáu ar iu", "es": "¿cómo estás?"},
+        {"en": "Please", "pron": "plis", "es": "por favor"},
+        {"en": "Thank you", "pron": "zenk iu", "es": "gracias"},
+        {"en": "Nice to meet you", "pron": "náis tu mit iu", "es": "mucho gusto"}
+    ]
+}

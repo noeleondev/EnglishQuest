@@ -47,9 +47,25 @@ ZONAS = {
     "Objetos":        ("Nivel_0/Objetos",        9),
     "Interrogativas": ("Nivel_0/Interrogativas", 10),
     "Adjetivos":      ("Nivel_0/Adjetivos",      11),
+    "G1 - Pronombres": ("Nivel_0/Gramatica_0/Pronombres", 12),
+    "G2 - Verbo To Be": ("Nivel_0/Gramatica_0/To_Be", 13),
+    "G3 - Artículos A-An": ("Nivel_0/Gramatica_0/Articulos", 14),
+    "G4 - Plurales": ("Nivel_0/Gramatica_0/Plurales", 15),
+    "G5 - This-That": ("Nivel_0/Gramatica_0/This_That", 16),
+    "G6 - Wh-Questions": ("Nivel_0/Gramatica_0/Wh_Questions", 17),
 }
 
 app = Flask(__name__, static_folder=None)
+@app.after_request
+def add_header(response):
+    """
+    Evita que el navegador guarde en caché las respuestas de la API.
+    """
+    if response.content_type == 'application/json':
+        response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
+        response.headers['Pragma'] = 'no-cache'
+        response.headers['Expires'] = '0'
+    return response
 
 # ─────────────────────────────────────────────────────────────────────────────
 # HELPERS DE USUARIOS
@@ -329,7 +345,43 @@ def api_zona_detalle(nombre: str):
 
     return jsonify({"resumen": resumen, "progreso": datos_raw, "usuario": usuario})
 
+@app.route("/api/teoria/<nombre>", methods=["GET"])
+def api_teoria(nombre: str):
+    """
+    GET /api/teoria/<nombre>
+    Devuelve el material de estudio (teoría) de una zona.
+    """
+    if nombre not in ZONAS:
+        abort(404, description=f"Zona '{nombre}' no existe.")
 
+    subcarpeta, num = ZONAS[nombre]
+    
+    # Intentar cargar el archivo de datos para leer la variable TEORIA
+    ruta_datos = BASE_DIR / subcarpeta / f"datos_zona{num}.py"
+    
+    if not ruta_datos.exists():
+        # Para las zonas viejas que no tengan TEORIA aún, devolvemos un mensaje por defecto
+        return jsonify({
+            "titulo": nombre,
+            "explicacion": "Material en construcción para esta zona.",
+            "tabla": []
+        })
+
+    spec = importlib.util.spec_from_file_location(f"datos_zona{num}", ruta_datos)
+    modulo = importlib.util.module_from_spec(spec)
+    sys.path.insert(0, str(BASE_DIR))
+    try:
+        spec.loader.exec_module(modulo)
+        teoria = getattr(modulo, "TEORIA", {
+            "titulo": nombre,
+            "explicacion": "Material no definido en este archivo.",
+            "tabla": []
+        })
+        return jsonify(teoria)
+    finally:
+        if str(BASE_DIR) in sys.path:
+            sys.path.remove(str(BASE_DIR))
+            
 @app.route("/api/jugar/<nombre>/<fase>", methods=["POST"])
 def api_jugar(nombre: str, fase: str):
     """
@@ -345,12 +397,15 @@ def api_jugar(nombre: str, fase: str):
         abort(400, description=f"Fase '{fase}' no válida.")
 
     usuario = request.args.get("usuario") or _leer_registro().get("ultimo_usuario") or "__anonimo__"
-    _, num = ZONAS[nombre]
-
-    subcarpeta, num = ZONAS[nombre]
+    
+    # AQUI ESTABA EL ERROR: Tenías dos líneas buscando lo mismo. 
+    # Lo dejamos en una sola, convirtiendo la ruta a Path para que Windows la entienda.
+    subcarpeta_str, num = ZONAS[nombre]
+    subcarpeta = Path(subcarpeta_str)
     ruta_motor_web = BASE_DIR / subcarpeta / f"motor_web_zona{num}.py"
+
     if not ruta_motor_web.exists():
-        abort(404, description=f"motor_web_zona{num}.py no encontrado.")
+        abort(404, description=f"motor_web_zona{num}.py no encontrado en {ruta_motor_web}")
 
     # Cargar el motor web dinámicamente
     spec = importlib.util.spec_from_file_location(f"motor_web_zona{num}", ruta_motor_web)

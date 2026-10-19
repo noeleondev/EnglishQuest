@@ -34,6 +34,12 @@ const ZONA_META = {
   'Objetos':        { icon: '🪑', orden: 9 },
   'Interrogativas': { icon: '❓', orden: 10 },
   'Adjetivos':      { icon: '✨', orden: 11 },
+  'G1 - Pronombres': { icon: '👤', orden: 12 },
+  'G2 - Verbo To Be': { icon: '🧬', orden: 13 },
+  'G3 - Artículos A-An': { icon: '📝', orden: 14 },
+  'G4 - Plurales': { icon: '📚', orden: 15 },
+  'G5 - This-That': { icon: '👉', orden: 16 },
+  'G6 - Wh-Questions': { icon: '❓', orden: 17 },
 };
 
 const FASE_META = {
@@ -343,7 +349,23 @@ function renderZonaDetalle(nombre, detalle) {
     $('play-title').innerHTML =
       `<span class="panel-icon" aria-hidden="true">${ZONA_META[nombre]?.icon || '🎮'}</span> ${nombre}`;
 
-    // Grid de fases
+    // Inyectar el botón de Teoría
+    const playArea = document.querySelector('.play-area');
+    
+    // Eliminamos si ya existía uno
+    document.getElementById('btn-teoria-zone')?.remove();
+    
+    const btnTeoria = document.createElement('button');
+    btnTeoria.id = 'btn-teoria-zone';
+    btnTeoria.className = 'btn-teoria';
+    btnTeoria.innerHTML = '📖 Estudiar Lección (Teoría)';
+    btnTeoria.onclick = () => abrirModalTeoria(nombre);
+
+    // Lo insertamos antes de la grilla de fases
+    const gridWrapper = $('phase-grid').parentElement; 
+    gridWrapper.insertBefore(btnTeoria, $('phase-grid'));
+
+      // Grid de fases
     const phaseGrid = $('phase-grid');
     phaseGrid.innerHTML = '';
 
@@ -869,6 +891,12 @@ const ZONAS_NUM = {
   'Objetos':        9,
   'Interrogativas': 10,
   'Adjetivos':      11,
+  'G1 - Pronombres': 12,
+  'G2 - Verbo To Be': 13,
+  'G3 - Artículos A-An': 14,
+  'G4 - Plurales': 15,
+  'G5 - This-That': 16,
+  'G6 - Wh-Questions': 17,
 };
 
 // ── MENSAJES DE ERROR (toast) ──────────────────────────────────────────────
@@ -943,6 +971,35 @@ async function _arrancar() {
   if (zonaInicio && State.zonas.find(z => z.nombre === zonaInicio)) {
     await seleccionarZona(zonaInicio);
   }
+}
+
+// ── FUNCIÓN PARA MOSTRAR LA TEORÍA ────────────────────────────────────────
+async function abrirModalTeoria(zonaNombre) {
+    try {
+        const data = await apiGet(`/api/teoria/${encodeURIComponent(zonaNombre)}`);
+        
+        let htmlTabla = '';
+        if (data.tabla && data.tabla.length > 0) {
+            htmlTabla = `<table class="tabla-teoria">
+                <tr><th>Inglés</th><th>Pronunciación</th><th>Español</th></tr>
+                ${data.tabla.map(f => `<tr><td>${f.en}</td><td>${f.pron}</td><td>${f.es}</td></tr>`).join('')}
+            </table>`;
+        }
+
+        const modalHTML = `
+            <div class="modal-overlay" onclick="this.remove()">
+                <div class="modal-content" onclick="event.stopPropagation()">
+                    <h2>${data.titulo}</h2>
+                    <p>${data.explicacion}</p>
+                    ${htmlTabla}
+                    <button onclick="this.closest('.modal-overlay').remove()" class="btn-cerrar">Cerrar y Jugar</button>
+                </div>
+            </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+    } catch (e) {
+        mostrarError("Error cargando la teoría: " + e.message);
+    }
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
