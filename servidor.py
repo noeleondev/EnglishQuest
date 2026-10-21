@@ -53,6 +53,18 @@ ZONAS = {
     "G4 - Plurales": ("Nivel_0/Gramatica_0/Plurales", 15),
     "G5 - This-That": ("Nivel_0/Gramatica_0/This_That", 16),
     "G6 - Wh-Questions": ("Nivel_0/Gramatica_0/Wh_Questions", 17),
+    "A1 - Frutas":     ("Nivel_0/Nivel_A1/Frutas",  18),
+    "A1 - Verduras":     ("Nivel_0/Nivel_A1/Verduras",  19),
+    "A1 - Comida":     ("Nivel_0/Nivel_A1/Comida",  20),
+    "A1 - Ropa":     ("Nivel_0/Nivel_A1/Ropa",  21),
+    "A1 - Cuerpo":     ("Nivel_0/Nivel_A1/Cuerpo",  22),
+    "A1 - Casa":     ("Nivel_0/Nivel_A1/Casa",  23),
+    "A1 - Profesiones": ("Nivel_0/Nivel_A1/Profesiones", 24), 
+    "A1 - Animales":    ("Nivel_0/Nivel_A1/Animales",    25), 
+    "A1 - Clima":       ("Nivel_0/Nivel_A1/Clima",       26),
+    "A1 - Rutina":       ("Nivel_0/Nivel_A1/Rutina",       27), 
+    "A1 - Verbos":       ("Nivel_0/Nivel_A1/Verbos",       28),
+    "A1 - Preposiciones":("Nivel_0/Nivel_A1/Preposiciones",29), 
 }
 
 app = Flask(__name__, static_folder=None)

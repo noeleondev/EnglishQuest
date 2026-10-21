@@ -40,6 +40,19 @@ const ZONA_META = {
   'G4 - Plurales': { icon: '📚', orden: 15 },
   'G5 - This-That': { icon: '👉', orden: 16 },
   'G6 - Wh-Questions': { icon: '❓', orden: 17 },
+  'A1 - Frutas':     { icon: '🍎', orden: 18 },
+  'A1 - Verduras':     { icon: '🥬', orden: 19 },
+  'A1 - Comida':     { icon: '🍔', orden: 20 },
+  'A1 - Ropa':     { icon: '👖', orden: 21 },
+  'A1 - Cuerpo':     { icon: '👂', orden: 22 },
+  'A1 - Casa':     { icon: '🏠', orden: 23 },
+  'A1 - Profesiones': { icon: '👨‍⚕️', orden: 24 }, 
+  'A1 - Animales':    { icon: '🐶', orden: 25 }, 
+  'A1 - Clima':       { icon: '☀️', orden: 26 }, 
+  'A1 - Rutina':       { icon: '🌅', orden: 27 }, 
+  'A1 - Verbos':       { icon: '🏃', orden: 28 }, 
+  'A1 - Preposiciones':{ icon: '📍', orden: 29 }, 
+
 };
 
 const FASE_META = {
@@ -897,6 +910,18 @@ const ZONAS_NUM = {
   'G4 - Plurales': 15,
   'G5 - This-That': 16,
   'G6 - Wh-Questions': 17,
+  'A1 - Frutas':     18,
+  'A1 - Verduras':     19,
+  'A1 - Comida':     20,
+  'A1 - Ropa':     21,
+  'A1 - Cuerpo':     22,
+  'A1 - Casa':     23,
+  'A1 - Profesiones': 24, 
+  'A1 - Animales':    25, 
+  'A1 - Clima':       26, 
+  'A1 - Rutina':       27, 
+  'A1 - Verbos':       28, 
+  'A1 - Preposiciones':29, 
 };
 
 // ── MENSAJES DE ERROR (toast) ──────────────────────────────────────────────
