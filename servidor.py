@@ -64,7 +64,13 @@ ZONAS = {
     "A1 - Clima":       ("Nivel_0/Nivel_A1/Clima",       26),
     "A1 - Rutina":       ("Nivel_0/Nivel_A1/Rutina",       27), 
     "A1 - Verbos":       ("Nivel_0/Nivel_A1/Verbos",       28),
-    "A1 - Preposiciones":("Nivel_0/Nivel_A1/Preposiciones",29), 
+    "A1 - Preposiciones":("Nivel_0/Nivel_A1/Preposiciones",29),
+    "A1 - Presente Simple": ("Nivel_0/Nivel_A1/Presente_Simple", 30), 
+    "A1 - There is-are":    ("Nivel_0/Nivel_A1/There_Is_Are",    31),
+    "A1 - Posesivos":   ("Nivel_0/Nivel_A1/Posesivos",   32), 
+    "A1 - Can-Cant":    ("Nivel_0/Nivel_A1/Can_Cant",    33), 
+    "A1 - Presente Cont.": ("Nivel_0/Nivel_A1/Presente_Continuo", 34), 
+    "A1 - Imperativo":     ("Nivel_0/Nivel_A1/Imperativo",        35), 
 }
 
 app = Flask(__name__, static_folder=None)

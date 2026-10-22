@@ -51,7 +51,13 @@ const ZONA_META = {
   'A1 - Clima':       { icon: '☀️', orden: 26 }, 
   'A1 - Rutina':       { icon: '🌅', orden: 27 }, 
   'A1 - Verbos':       { icon: '🏃', orden: 28 }, 
-  'A1 - Preposiciones':{ icon: '📍', orden: 29 }, 
+  'A1 - Preposiciones':{ icon: '📍', orden: 29 },
+  'A1 - Presente Simple': { icon: '📝', orden: 30 }, 
+  'A1 - There is-are':    { icon: '📦', orden: 31 }, 
+  'A1 - Posesivos':   { icon: '👤', orden: 32 }, 
+  'A1 - Can-Cant':    { icon: '💪', orden: 33 },
+  'A1 - Presente Cont.': { icon: '🏃‍♂️', orden: 34 }, 
+  'A1 - Imperativo':     { icon: '🛑', orden: 35 }, 
 
 };
 
@@ -921,7 +927,13 @@ const ZONAS_NUM = {
   'A1 - Clima':       26, 
   'A1 - Rutina':       27, 
   'A1 - Verbos':       28, 
-  'A1 - Preposiciones':29, 
+  'A1 - Preposiciones':29,
+  'A1 - Presente Simple': 30,
+  'A1 - There is-are':    31,
+  'A1 - Posesivos':   32, 
+  'A1 - Can-Cant':    33,
+  'A1 - Presente Cont.': 34, 
+  'A1 - Imperativo':     35, 
 };
 
 // ── MENSAJES DE ERROR (toast) ──────────────────────────────────────────────
