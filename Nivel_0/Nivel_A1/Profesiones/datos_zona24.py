@@ -9,8 +9,8 @@ SECCIONES = {
             ("teacher", "tícher", "maestro/a"),
             ("doctor", "dóctor", "doctor/a"),
             ("nurse", "ners", "enfermero/a"),
-            ("engineer", "enyinír", "ingeniero/a"),
-            ("lawyer", "lóyer", "abogado/a"),
+            ("engineer", "enllinír", "ingeniero/a"),
+            ("lawyer", "lóller", "abogado/a"),
             ("police officer", "polís ófiser", "policía"),
             ("firefighter", "fáirfaiter", "bombero/a"),
             ("chef", "chef", "chef / cocinero"),
@@ -31,13 +31,13 @@ def obtener_todas_las_palabras():
 
 TEORIA = {
     "titulo": "Las Profesiones en Inglés (A1)",
-    "explicacion": "Muchas profesiones terminan en '-er' o '-or' (teacher, doctor). Fíjate que 'chef' es una palabra francesa adoptada, por eso se pronuncia igual. 'Police officer' es el término moderno para no especificar género.",
+    "explicacion": "Sufijos y pronunciación.\n\n• Muchas profesiones terminan en '-er' o '-or' (teacher, doctor).\n• 'Chef' es una palabra francesa adoptada, por eso se pronuncia igual que en español.\n• 'Police officer' es el término moderno para no especificar género.",
     "tabla": [
         {"en": "teacher", "pron": "tícher", "es": "maestro/a"},
         {"en": "doctor", "pron": "dóctor", "es": "doctor/a"},
         {"en": "nurse", "pron": "ners", "es": "enfermero/a"},
-        {"en": "engineer", "pron": "enyinír", "es": "ingeniero/a"},
-        {"en": "lawyer", "pron": "lóyer", "es": "abogado/a"},
+        {"en": "engineer", "pron": "enllinír", "es": "ingeniero/a"},
+        {"en": "lawyer", "pron": "lóller", "es": "abogado/a"},
         {"en": "police officer", "pron": "polís ófiser", "es": "policía"},
         {"en": "firefighter", "pron": "fáirfaiter", "es": "bombero/a"},
         {"en": "chef", "pron": "chef", "es": "chef / cocinero"},

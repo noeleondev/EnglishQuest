@@ -26,7 +26,7 @@ def obtener_todas_las_palabras():
 
 TEORIA = {
     "titulo": "El Clima en Inglés (A1)",
-    "explicacion": "Para describir el clima, casi siempre usamos la terminación '-y' (sunny, rainy). La palabra 'weather' (clima) suena como 'uérder', con la 'th' suave.",
+    "explicacion": "Sufijos y sonidos suaves.\n\n• Para describir el clima, casi siempre usamos la terminación '-y' (sunny, rainy).\n• La palabra 'weather' (clima) suena como 'uérder', con la 'th' suave.",
     "tabla": [
         {"en": "sunny", "pron": "sóni", "es": "soleado"},
         {"en": "rainy", "pron": "réini", "es": "lluvioso"},

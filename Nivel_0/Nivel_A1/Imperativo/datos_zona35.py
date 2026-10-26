@@ -15,7 +15,7 @@ def obtener_todos_los_ejercicios():
 
 TEORIA = {
     "titulo": "El Imperativo (A1)",
-    "explicacion": "Se usa para dar órdenes, instrucciones o consejos. Se forma usando el verbo en su forma base SIN el 'to' y sin sujeto (ej. 'Open the door'). Para negar, solo agregamos 'Don't' al principio (ej. 'Don't open').",
+    "explicacion": "Órdenes, instrucciones y consejos.\n\n• Se forma usando el verbo en su forma base SIN el 'to' y sin sujeto (ej. 'Open the door').\n• Para negar, solo agregamos 'Don't' al principio (ej. 'Don't open').\n• Es muy útil para dar direcciones o instrucciones en clase.",
     "tabla": [
         {"en": "Open", "pron": "óupen", "es": "Abre"},
         {"en": "Close", "pron": "clóus", "es": "Cierra"},

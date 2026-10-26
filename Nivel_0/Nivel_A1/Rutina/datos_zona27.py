@@ -31,7 +31,7 @@ def obtener_todas_las_palabras():
 
 TEORIA = {
     "titulo": "La Rutina Diaria (A1)",
-    "explicacion": "Aquí usamos verbos compuestos (phrasal verbs) muy comunes. Fíjate que 'wake up' (despertarse) es diferente de 'get up' (levantarse de la cama). La 'h' en 'have breakfast' se pronuncia como 'j' suave.",
+    "explicacion": "Phrasal verbs y diferencias clave.\n\n• Aquí usamos verbos compuestos (phrasal verbs) muy comunes.\n• Fíjate que 'wake up' (despertarse) es diferente de 'get up' (levantarse de la cama).\n• La 'h' en 'have breakfast' se pronuncia como 'j' suave.",
     "tabla": [
         {"en": "morning", "pron": "mórnin", "es": "mañana"},
         {"en": "afternoon", "pron": "afternún", "es": "tarde"},

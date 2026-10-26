@@ -14,7 +14,7 @@ SECCIONES = {
         "palabras": [
             ("What",     "uát",       "qué"),
             ("Who",      "ju",        "quién"),
-            ("Where",    "uérd",      "dónde"),
+            ("Where",    "uér",       "dónde"),
             ("When",     "uén",       "cuándo"),
             ("Why",      "uái",       "por qué"),
             ("How",      "jáu",       "cómo"),
@@ -27,7 +27,6 @@ SECCIONES = {
 
 ORDEN_SECCIONES = ["s1"]
 
-
 def obtener_todas_las_palabras():
     todas = []
     for sid in ORDEN_SECCIONES:
@@ -36,11 +35,11 @@ def obtener_todas_las_palabras():
 
 TEORIA = {
     "titulo": "Palabras Interrogativas (Question Words)",
-    "explicacion": "Todas estas palabras empiezan con 'Wh' (excepto 'How'). 'Who' se usa para personas, 'Where' para lugares, 'When' para tiempo y 'Why' para razones. La diferencia entre 'How much' y 'How many' es si el sustantivo se puede contar o no (dinero/tiempo vs. manzanas/personas).",
+    "explicacion": "Todas estas palabras empiezan con 'Wh' (excepto 'How').\n\n• 'Who' se usa para personas.\n• 'Where' para lugares.\n• 'When' para tiempo.\n• 'Why' para razones.\n• La diferencia entre 'How much' y 'How many' es si el sustantivo se puede contar o no (dinero/tiempo vs. manzanas/personas).",
     "tabla": [
         {"en": "What", "pron": "uát", "es": "qué"},
         {"en": "Who", "pron": "ju", "es": "quién"},
-        {"en": "Where", "pron": "uérd", "es": "dónde"},
+        {"en": "Where", "pron": "uér", "es": "dónde"},
         {"en": "When", "pron": "uén", "es": "cuándo"},
         {"en": "Why", "pron": "uái", "es": "por qué"},
         {"en": "How", "pron": "jáu", "es": "cómo"},

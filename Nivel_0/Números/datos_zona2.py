@@ -6,7 +6,7 @@ SECCIONES = {
         "nombre": "Números Básicos",
         "rango": "0–20",
         "palabras": [
-            ("zero", "zírou", "cero"),
+            ("zero", "sírou", "cero"),
             ("one", "uán", "uno"),
             ("two", "tu", "dos"),
             ("three", "zrí", "tres"),
@@ -40,8 +40,9 @@ def obtener_todas_las_palabras():
 
 TEORIA = {
     "titulo": "Los Números Básicos (0 al 20)",
-    "explicacion": "Para empezar, debes dominar los números del 0 al 20. Del 13 al 19 terminan con '-teen' (como sixteen). En el siguiente nivel (A1) aprenderás las decenas y los números del 20 al 100.",
+    "explicacion": "Para empezar, debes dominar los números del 0 al 20.\n\n• Del 13 al 19 terminan con '-teen' (como sixteen).\n• En el siguiente nivel (A1) aprenderás las decenas y los números del 20 al 100.",
     "tabla": [
+        {"en": "zero", "pron": "sírou", "es": "0"},
         {"en": "one", "pron": "uán", "es": "1"},
         {"en": "two", "pron": "tu", "es": "2"},
         {"en": "three", "pron": "zrí", "es": "3"},

@@ -1,57 +1,43 @@
 /**
- * theme_manager.js — v2
- * ─────────────────────────────────────────────────────────────
- * Gestiona el sistema de temas de English Quest.
- *
- * Novedades v2:
- *   - Modo Sorpresa: al cargar la página, 10% de probabilidad de aplicar
- *     un tema aleatorio (excluye el preferido por el usuario).
- *   - localStorage para tema, modo sorpresa on/off y última zona jugada.
- *   - API pública ampliada: setSurpriseMode(), isSurprise(), setLastZone(),
- *     getLastZone().
- *   - El dropdown muestra una opción "🎲 Modo Sorpresa: ON/OFF" separada.
- *
- * Uso desde app.js:
- *   ThemeManager.apply('theme_halloween');
- *   ThemeManager.current();          // → 'theme_halloween'
- *   ThemeManager.isSurprise();       // → true/false
- *   ThemeManager.setSurpriseMode(false);
- *   ThemeManager.setLastZone('Alfabeto');
- *   ThemeManager.getLastZone();      // → 'Alfabeto' | null
- * ─────────────────────────────────────────────────────────────
+ * theme_manager.js — v3 (Modo Neón Reactivo)
  */
 
 const ThemeManager = (() => {
-  // ── Configuración de temas ─────────────────────────────────────────────
+  // 1. Paleta de colores (Movido fuera del objeto THEMES)
+  const NEON_COLORS = ['#00e5ff', '#ff00ff', '#39ff7e', '#ffcc00', '#ff3d71', '#a78bfa'];
+
+  // 2. Configuración de temas
   const THEMES = {
     theme_default: {
       label:      '🌌 Cyberpunk',
       headerIcon: '⚔️',
       welcomeIcon:'⚔️',
       decos: ['⚡', '🔷', '◈', '▸', '⬡', '⚡', '◈'],
+      confetti: ['★', '✦', '◆', '▲', '●', '✱', '❋', '⬟', '✿', '❂'] // Confeti Cyberpunk
     },
     theme_halloween: {
       label:      '🎃 Halloween',
       headerIcon: '🎃',
       welcomeIcon:'👻',
-      decos: ['🎃', '👻', '🦇', '🕷️', '🕸️', '🎃', '💀'],
+      decos: ['🎃', '👻', '🦇', '🕷️', '🕸️', '💀', '🧙‍♂️', '🧪'],
+      confetti: ['🎃', '👻', '🦇', '💀', '🕷️', '🕸️', '🍬'] // Confeti Halloween
     },
     theme_christmas: {
       label:      '❄️ Christmas',
       headerIcon: '🎄',
       welcomeIcon:'🎁',
       decos: ['❄️', '🎄', '🎁', '⭐', '🔔', '❄️', '🎅'],
+      confetti: ['❄️', '🎁', '⭐', '🔔', '🎄', '🍬'] // Confeti Navidad
     },
   };
 
   const THEME_KEYS      = Object.keys(THEMES);
   const STORAGE_THEME   = 'eq_theme';
-  const STORAGE_SURPRISE= 'eq_surprise';   // 'on' | 'off'
+  const STORAGE_SURPRISE= 'eq_surprise';
   const STORAGE_ZONE    = 'eq_last_zone';
   const DEFAULT_THEME   = 'theme_default';
   const DECO_CLASS      = 'theme-deco';
   const DECO_COUNT      = 8;
-  const SURPRISE_CHANCE = 0.10;            // 10 %
 
   // ── Lectura de preferencias ────────────────────────────────────────────
   function getSaved() {
@@ -60,7 +46,6 @@ const ThemeManager = (() => {
   }
 
   function isSurprise() {
-    // Por defecto ON si nunca se ha guardado la preferencia
     return localStorage.getItem(STORAGE_SURPRISE) !== 'off';
   }
 
@@ -78,11 +63,6 @@ const ThemeManager = (() => {
   }
 
   // ── Aplicar un tema ────────────────────────────────────────────────────
-  /**
-   * @param {string} themeKey  - clave del tema
-   * @param {boolean} persist  - si false, NO guarda en localStorage
-   *                             (usado para el tema sorpresa temporal)
-   */
   function apply(themeKey, persist = true) {
     if (!THEMES[themeKey]) {
       console.warn(`[ThemeManager] Tema desconocido: "${themeKey}". Usando default.`);
@@ -95,47 +75,42 @@ const ThemeManager = (() => {
     const link = document.getElementById('theme-stylesheet');
     if (link) link.href = `styles/${themeKey}.css`;
 
-    // 2. Marcar el body con data-theme para los selectores CSS
+    // 2. Marcar el body
     document.body.setAttribute('data-theme', themeKey);
 
-    // 3. Sincronizar el dropdown de temas (solo si persiste)
+    // 3. Sincronizar el dropdown
     if (persist) {
       const select = document.getElementById('theme-select');
       if (select && select.value !== themeKey) select.value = themeKey;
     }
 
-    // 4. Actualizar iconos dinámicos del tema
+    // 4. Actualizar iconos y decoraciones
     _updateIcons(meta);
-
-    // 5. Reemplazar decoraciones flotantes
     _injectDecos(meta.decos);
 
-    // 6. Guardar en localStorage solo si es una elección permanente
+    // 5. Guardar en localStorage solo si es una elección permanente
     if (persist) localStorage.setItem(STORAGE_THEME, themeKey);
+    
+    // 6. Limpiar colores neón si se cambia a un tema normal
+    if (themeKey !== 'theme_default') {
+        document.documentElement.style.removeProperty('--accent');
+        document.documentElement.style.removeProperty('--glow-accent');
+        document.documentElement.style.removeProperty('--glow-accent-strong');
+    }
   }
 
-  // ── Modo Sorpresa ──────────────────────────────────────────────────────
-  /**
-   * Si el modo sorpresa está activo y la ruleta acierta (10%),
-   * aplica un tema aleatorio (distinto al preferido) SIN guardarlo,
-   * y muestra un banner informativo.
-   * Devuelve true si se aplicó el tema sorpresa.
-   */
+  // ── Modo Neón Reactivo ──────────────────────────────────────────────────
   function tryApplySurprise() {
     if (!isSurprise()) return false;
-    if (Math.random() > SURPRISE_CHANCE) return false;
-
-    const preferred = getSaved();
-    const options   = THEME_KEYS.filter(k => k !== preferred);
-    const pick      = options[Math.floor(Math.random() * options.length)];
-
-    // Aplicar sin persistir (el dropdown no cambia)
-    apply(pick, false);
-
-    // Mostrar banner de aviso
-    _showSurpriseBanner(THEMES[pick].label);
-
+    applyNeonMode();
     return true;
+  }
+
+  function applyNeonMode() {
+    const randomColor = NEON_COLORS[Math.floor(Math.random() * NEON_COLORS.length)];
+    document.documentElement.style.setProperty('--accent', randomColor);
+    document.documentElement.style.setProperty('--glow-accent', `0 0 8px ${randomColor}55`);
+    document.documentElement.style.setProperty('--glow-accent-strong', `0 0 18px ${randomColor}aa`);
   }
 
   // ── Helpers privados ───────────────────────────────────────────────────
@@ -148,64 +123,45 @@ const ThemeManager = (() => {
 
   function _injectDecos(symbols) {
     document.querySelectorAll(`.${DECO_CLASS}`).forEach(el => el.remove());
-
     for (let i = 0; i < DECO_COUNT; i++) {
       const el = document.createElement('span');
       el.className   = DECO_CLASS;
       el.textContent = symbols[i % symbols.length];
       el.setAttribute('aria-hidden', 'true');
-
       el.style.left      = `${Math.random() * 95}vw`;
       el.style.top       = `${Math.random() * 90}vh`;
       el.style.fontSize  = `${1.2 + Math.random() * 1.2}rem`;
-
       const dur   = 5 + Math.random() * 5;
       const delay = -(Math.random() * dur);
       el.style.animationDuration = `${dur}s`;
       el.style.animationDelay   = `${delay}s`;
-
       document.body.appendChild(el);
     }
   }
 
-  function _showSurpriseBanner(themeLabel) {
-    const banner = document.createElement('div');
-    banner.className   = 'surprise-banner';
-    banner.textContent = `🎲 ¡Modo Sorpresa activado! Tema: ${themeLabel}`;
-    banner.setAttribute('aria-live', 'polite');
-    document.body.appendChild(banner);
-    // Limpiar tras la animación (4 s entrada + 0.4 s salida + margen)
-    setTimeout(() => banner.remove(), 5000);
-  }
-
   function _syncSurpriseCheckbox() {
-    // Actualiza el label del option de sorpresa si existe
     const opt = document.getElementById('surprise-option');
     if (opt) opt.textContent = isSurprise() ? '🎲 Sorpresa: ON' : '🎲 Sorpresa: OFF';
   }
 
   // ── Inicialización ─────────────────────────────────────────────────────
   function init() {
+    // Escuchar cuando el juego pide un cambio de neón
+    document.addEventListener('eq:neon-change', () => {
+        applyNeonMode();
+    });
+
     const saved = getSaved();
-
-    // 1. Aplicar tema preferido guardado (evita FOUC)
     apply(saved);
-
-    // 2. Intentar modo sorpresa (sobreescribe temporalmente)
     tryApplySurprise();
-
-    // 3. Sincronizar option de sorpresa
     _syncSurpriseCheckbox();
 
-    // 4. Escuchar cambios en el dropdown de temas
     const select = document.getElementById('theme-select');
     if (select) {
       select.addEventListener('change', (e) => {
         const val = e.target.value;
         if (val === '__surprise_toggle__') {
-          // Toggle del modo sorpresa
           setSurpriseMode(!isSurprise());
-          // Restaurar el dropdown al tema actual
           select.value = getSaved();
         } else {
           apply(val);
@@ -214,7 +170,6 @@ const ThemeManager = (() => {
     }
   }
 
-  // ── API pública ────────────────────────────────────────────────────────
   return {
     init,
     apply,
@@ -227,5 +182,4 @@ const ThemeManager = (() => {
   };
 })();
 
-// Ejecutar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => ThemeManager.init());

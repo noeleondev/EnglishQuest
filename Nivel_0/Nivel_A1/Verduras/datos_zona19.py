@@ -34,7 +34,7 @@ def obtener_todas_las_palabras():
 
 TEORIA = {
     "titulo": "Las Verduras en Inglés (A1)",
-    "explicacion": "Cuidado con 'lettuce' (lechuga) y 'cabbage' (repollo), son palabras distintas. Además, 'pepper' se usa tanto para pimiento como para chile. La pronunciación de 'mushroom' tiene el sonido 'sh' suave.",
+    "explicacion": "Cuidado con las traducciones directas.\n\n• 'Lettuce' es lechuga y 'cabbage' es repollo, son palabras distintas.\n• 'Pepper' se usa tanto para pimiento como para chile.\n• La pronunciación de 'mushroom' tiene el sonido 'sh' suave.",
     "tabla": [
         {"en": "potato", "pron": "potétou", "es": "papa"},
         {"en": "tomato", "pron": "tométou", "es": "tomate"},

@@ -31,7 +31,7 @@ def obtener_todas_las_palabras():
 
 TEORIA = {
     "titulo": "Los Animales en Inglés (A1)",
-    "explicacion": "La 'ch' en 'chicken' suena como en español. La 'i' en 'lion' y 'tiger' es un diptongo (lái-on, tái-guer). 'Bear' (oso) y 'bird' (pájaro) suenan parecido, presta atención a la vocal.",
+    "explicacion": "Sonidos y diptongos.\n\n• La 'ch' en 'chicken' suena como en español.\n• La 'i' en 'lion' y 'tiger' es un diptongo (lái-on, tái-guer).\n• 'Bear' (oso) y 'bird' (pájaro) suenan parecido, presta atención a la vocal.",
     "tabla": [
         {"en": "dog", "pron": "dog", "es": "perro"},
         {"en": "cat", "pron": "kat", "es": "gato"},

@@ -6,7 +6,8 @@ sys.path.insert(0, str(Path(__file__).parent))
 import datos_zona17 as datos
 
 def generar_pregunta(fase, num):
-    ejercicios = datos.EJERCICIOS
+    # .copy() para no modificar la lista original en memoria
+    ejercicios = datos.EJERCICIOS.copy()
     random.shuffle(ejercicios)
     ej = ejercicios[num % len(ejercicios)]
     oracion_hueco, opciones, respuesta, traduccion, oracion_completa = ej

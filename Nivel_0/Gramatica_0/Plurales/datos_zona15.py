@@ -13,12 +13,12 @@ EJERCICIOS = [
 
 TEORIA = {
     "titulo": "El Plural de los Sustantivos",
-    "explicacion": "🌟 En español agregamos 's' o 'es'. En inglés es muy similar, pero hay trampas.\n\n⚙️ Reglas principales:\n• Normal: agrega **-s** (book → books).\n• Termina en S, SS, SH, CH, X, Z: agrega **-es** (box → boxes).\n• Termina en Consonante + Y: la Y cambia a I y agrega **-es** (city → cities).\n• Termina en Vocal + Y: solo agrega **-s** (toy → toys).\n\n🚨 ¡Ojo con los irregulares! No siguen reglas:\n• man → men (hombre → hombres)\n• woman → women (mujer → mujeres)\n• child → children (niño → niños)",
+    "explicacion": "🌟 En español agregamos 's' o 'es'. En inglés es muy similar, pero hay trampas.\n\n⚙️ Reglas principales:\n• Normal: agrega **-s** (book → books).\n• Termina en S, SS, SH, CH, X, Z: agrega **-es** (box → boxes).\n• Termina en Consonante + Y: la Y cambia a I y agrega **-es** (city → cities).\n• Termina en Vocal + Y: solo agrega **-s** (toll → tolls).\n\n🚨 ¡Ojo con los irregulares! No siguen reglas:\n• man → men (hombre → hombres)\n• woman → women (mujer → mujeres)\n• child → children (niño → niños)",
     "tabla": [
         {"en": "Book → Books", "pron": "buk → buks", "es": "libro → libros"},
         {"en": "Box → Boxes", "pron": "boks → bókses", "es": "caja → cajas"},
         {"en": "City → Cities", "pron": "siti → sitis", "es": "ciudad → ciudades"},
-        {"en": "Toy → Toys", "pron": "toy → toys", "es": "juguete → juguetes"},
+        {"en": "Toy → Toys", "pron": "toll → tolls", "es": "juguete → juguetes"},
         {"en": "Man → Men", "pron": "man → men", "es": "hombre → hombres"},
         {"en": "Child → Children", "pron": "chaild → chíldren", "es": "niño → niños"}
     ]

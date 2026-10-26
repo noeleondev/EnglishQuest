@@ -1583,7 +1583,10 @@ a:hover { text-decoration: underline; }
   .opcion-btn    { font-size: 0.92rem; padding: 0.65rem 0.9rem; }
 }
 
-/* Estilos para el Modal de Teoría */
+/* ═══════════════════════════════════════════════════════════════════════════
+   ESTILOS PARA EL MODAL DE TEORÍA (v5 - Mejorado)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
 .btn-teoria {
     background-color: #e94560;
     color: white;
@@ -1595,57 +1598,124 @@ a:hover { text-decoration: underline; }
     width: 100%;
     margin-bottom: 20px;
     font-weight: bold;
-    transition: transform 0.2s, background 0.2s;
+    transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
 }
 .btn-teoria:hover {
     background-color: #c73652;
-    transform: scale(1.02);
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 6px 20px rgba(233, 69, 96, 0.5);
 }
+
 .modal-overlay {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(4px); /* Efecto de desenfoque */
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    animation: fade-in-up 0.2s ease;
 }
+
 .modal-content {
     background: #16213e;
     padding: 30px;
     border-radius: 12px;
-    max-width: 600px;
+    max-width: 650px;
     width: 90%;
-    max-height: 80vh;
+    max-height: 85vh;
     overflow-y: auto;
     color: white;
-    border: 2px solid #0f3460;
-    box-shadow: 0 0 20px rgba(233, 69, 96, 0.3);
+    border: 1px solid #0f3460;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6), 0 0 20px rgba(0, 212, 255, 0.1);
 }
+
+/* Título del modal */
+.modal-teoria-titulo {
+    color: #00d4ff;
+    font-family: var(--font-display, sans-serif);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+}
+
+/* 🪄 LA MAGIA PARA EL TEXTO AMONTONADO 🪄 */
+.teoria-texto {
+    white-space: pre-line; /* ¡Esto respeta los \n\n de Python! */
+    font-size: 1rem;
+    line-height: 1.7;      /* Da espacio entre líneas */
+    color: #d1d5db;        /* Color gris claro */
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+/* Tabla mejorada */
 .tabla-teoria {
     width: 100%;
     border-collapse: collapse;
-    margin: 15px 0;
+    margin: 15px 0 25px 0;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
 }
+
 .tabla-teoria th, .tabla-teoria td {
-    padding: 10px;
-    border-bottom: 1px solid #2a2a4e;
+    padding: 12px 15px;
     text-align: left;
 }
+
 .tabla-teoria th {
+    background: #0f3460;
     color: #00d4ff;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
 }
+
+.tabla-teoria td {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: #e2e8f0;
+}
+
+/* Efecto Cebra: Filas pares con fondo sutil */
+.tabla-teoria tbody tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.02);
+}
+.tabla-teoria tbody tr:hover {
+    background: rgba(0, 212, 255, 0.05);
+}
+.tabla-teoria tbody tr:last-child td {
+    border-bottom: none;
+}
+
 .btn-cerrar {
     background: #0f3460;
     color: white;
     border: 1px solid #00d4ff;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1rem;
     cursor: pointer;
-    margin-top: 15px;
+    margin-top: 10px;
     width: 100%;
+    transition: all 0.2s;
 }
 .btn-cerrar:hover {
     background: #00d4ff;
     color: #000;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+}
+
+/* Agrega esto al final de tu base.css */
+.resaltado {
+    color: #00d4ff;               /* Azul neón de tu tema */
+    font-weight: 700;             /* Negritas */
+    background: rgba(0, 212, 255, 0.1); /* Un fondo sutil azul transparente */
+    padding: 2px 6px;             /* Un poco de espacio alrededor */
+    border-radius: 4px;           /* Bordes redondeados */
+    font-family: var(--font-display); /* Fuente tipo código */
 }

@@ -117,3 +117,91 @@ body[data-theme="theme_default"] .user-btn:not(.user-btn-empty) {
 body[data-theme="theme_default"] .modal-tab.active {
   text-shadow: 0 0 8px rgba(0,0,0,0.5);
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MEJORAS CYBERPUNK v3 — Alto Contraste y Efectos Sci-Fi
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* 1. Tarjetas con ángulos cortados y FONDO CONTRASTADO */
+body[data-theme="theme_default"] .zone-card, 
+body[data-theme="theme_default"] .phase-card,
+body[data-theme="theme_default"] .stat-card {
+  clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
+  border-radius: 0 !important; /* Fuerza la eliminación de bordes redondos */
+  border: 1px solid rgba(0, 229, 255, 0.6) !important; /* Borde neón más sólido */
+  background: #1a1e36 !important; /* Fondo más claro para contrastar con el fondo base */
+  box-shadow: inset 0 0 15px rgba(0, 229, 255, 0.05), 0 4px 10px rgba(0,0,0,0.5) !important;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* 2. Efecto Hover: Brillo neón y desplazamiento sutil */
+body[data-theme="theme_default"] .zone-card:hover:not(.zone-locked),
+body[data-theme="theme_default"] .phase-card:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: inset 0 0 20px rgba(0, 229, 255, 0.2), 0 0 15px rgba(0, 229, 255, 0.4) !important;
+  border-color: var(--accent) !important;
+  background: #202642 !important;
+}
+
+/* Ajuste para el texto dentro de las tarjetas */
+body[data-theme="theme_default"] .zone-card-name,
+body[data-theme="theme_default"] .phase-name {
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
+}
+
+/* 3. Botón de Jugar Principal (Efecto de energía) */
+body[data-theme="theme_default"] .btn-primary {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, #00e5ff, #0055ff);
+  border: 1px solid #00e5ff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+}
+
+body[data-theme="theme_default"] .btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 50%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+  transform: skewX(-20deg);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% { left: -100%; }
+  20% { left: 100%; }
+  100% { left: 100%; }
+}
+
+/* 4. Barras de progreso animadas */
+body[data-theme="theme_default"] .zone-progress-fill,
+body[data-theme="theme_default"] .pregunta-progress-bar {
+  background: linear-gradient(90deg, #00e5ff, #39ff7e);
+  box-shadow: 0 0 10px #00e5ff;
+  position: relative;
+  overflow: hidden;
+}
+
+body[data-theme="theme_default"] .zone-progress-fill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(-45deg, transparent, transparent 4px, rgba(0,0,0,0.3) 4px, rgba(0,0,0,0.3) 8px);
+  animation: slide-stripes 1s linear infinite;
+}
+
+@keyframes slide-stripes {
+  from { background-position: 0 0; }
+  to { background-position: 20px 0; }
+}
+
+/* 5. Badge de XP con forma de "Chip" y el Header central */
+body[data-theme="theme_default"] .xp-badge {
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  border-radius: 0 !important;
+  border: 1px solid var(--accent) !important;
+  background: #101426 !important;
+  box-shadow: inset 0 0 10px rgba(0, 229, 255, 0.2) !important;
+}

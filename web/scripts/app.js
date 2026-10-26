@@ -58,7 +58,19 @@ const ZONA_META = {
   'A1 - Can-Cant':    { icon: '💪', orden: 33 },
   'A1 - Presente Cont.': { icon: '🏃‍♂️', orden: 34 }, 
   'A1 - Imperativo':     { icon: '🛑', orden: 35 }, 
-
+  'A2 - Viajes':      { icon: '✈️', orden: 36 }, 
+  'A2 - Compras':     { icon: '🛒', orden: 37 }, 
+  'A2 - Salud':       { icon: '🏥', orden: 38 },
+  'A2 - Tecnologia':  { icon: '💻', orden: 39 }, 
+  'A2 - Emociones':   { icon: '😊', orden: 40 }, 
+  'A2 - Pasatiempos': { icon: '🎨', orden: 41 },
+  'A2 - Adjetivos Comp.': { icon: '⚖️', orden: 42 },
+  'A2 - Verbos Irreg.':   { icon: '⏪', orden: 43 },
+  'A2 - Pasado Regular': { icon: '⏪', orden: 44 },
+  'A2 - Futuro':         { icon: '🚀', orden: 45 },
+  'A2 - Comparativos':   { icon: '⚖️', orden: 46 }, 
+  'A2 - Modales':        { icon: '🛑', orden: 47 }, 
+  'A2 - Adverbios Modo': { icon: '🏃‍♂️', orden: 48 }, 
 };
 
 const FASE_META = {
@@ -68,8 +80,6 @@ const FASE_META = {
   jefe: { icon: '👾', nombre: 'JEFE — Dictado' },
 };
 
-// Símbolos del confeti (mezcla de ASCII y emoji simples)
-const CONFETTI_SYMBOLS = ['★', '✦', '◆', '▲', '●', '✱', '❋', '⬟', '✿', '❂'];
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 
@@ -133,21 +143,34 @@ function animXpFloat(xpDelta, anchorEl) {
  * @param {number} count — número de partículas
  */
 function animConfetti(count = 40) {
+  // 1. Preguntamos al ThemeManager cuál es el tema actual y su confeti
+  const temaActual = (typeof ThemeManager !== 'undefined') ? ThemeManager.current() : 'theme_default';
+  const configTema = (typeof ThemeManager !== 'undefined') ? ThemeManager.themes[temaActual] : null;
+  
+  // 2. Si el tema tiene confeti definido, lo usamos. Si no, usamos estrellas por defecto.
+  const simbolos = (configTema && configTema.confetti) ? configTema.confetti : ['★', '✦', '◆'];
+
   for (let i = 0; i < count; i++) {
     const el = document.createElement('span');
     el.className   = 'confetti-particle';
-    el.textContent = CONFETTI_SYMBOLS[Math.floor(Math.random() * CONFETTI_SYMBOLS.length)];
+    // 3. Elegimos un símbolo aleatorio del tema actual
+    el.textContent = simbolos[Math.floor(Math.random() * simbolos.length)];
     el.setAttribute('aria-hidden', 'true');
 
-    const x    = Math.random() * 100;       // % horizontal
-    const dur  = 1.8 + Math.random() * 1.4; // segundos de caída
-    const dlay = Math.random() * 0.8;        // escalonar arranque
+    const x    = Math.random() * 100;       
+    const dur  = 1.8 + Math.random() * 1.4; 
+    const dlay = Math.random() * 0.8;        
     const rot  = (Math.random() > 0.5 ? 1 : -1) * (180 + Math.random() * 360);
-    const dist = 70 + Math.random() * 25;   // vh de caída
+    const dist = 70 + Math.random() * 25;   
 
     el.style.left    = `${x}vw`;
     el.style.top     = `-2rem`;
-    el.style.color   = `hsl(${Math.random() * 360}, 90%, 65%)`;
+    
+    // Solo aplicamos colores HSL al tema Cyberpunk (los emojis ya tienen su propio color)
+    if (temaActual === 'theme_default') {
+        el.style.color = `hsl(${Math.random() * 360}, 90%, 65%)`;
+    }
+    
     el.style.setProperty('--fall-dur',   `${dur}s`);
     el.style.setProperty('--fall-delay', `${dlay}s`);
     el.style.setProperty('--fall-rot',   `${rot}deg`);
@@ -894,6 +917,12 @@ async function jugarFase() {
     }
   } catch (_) { /* no crítico */ }
 
+  // ── MODO NEÓN REACTIVO (Al final de la partida) ─────────────────────────
+  if (typeof ThemeManager !== 'undefined' && ThemeManager.isSurprise() && localStorage.getItem('eq_theme') === 'theme_default') {
+      document.dispatchEvent(new CustomEvent('eq:neon-change'));
+      animAchievement('🎲', 'Modo Neón Reactivo', '¡El color de tu interfaz ha evolucionado!');
+  }
+
   State.jugando = false;
 }
 
@@ -933,7 +962,20 @@ const ZONAS_NUM = {
   'A1 - Posesivos':   32, 
   'A1 - Can-Cant':    33,
   'A1 - Presente Cont.': 34, 
-  'A1 - Imperativo':     35, 
+  'A1 - Imperativo':     35,
+  'A2 - Viajes':      36, 
+  'A2 - Compras':     37, 
+  'A2 - Salud':       38,
+  'A2 - Tecnologia':  39, 
+  'A2 - Emociones':   40, 
+  'A2 - Pasatiempos': 41,
+  'A2 - Adjetivos Comp.': 42, 
+  'A2 - Verbos Irreg.':   43, 
+  'A2 - Pasado Regular': 44,
+  'A2 - Futuro':         45,
+  'A2 - Comparativos':   46, 
+  'A2 - Modales':        47, 
+  'A2 - Adverbios Modo': 48, 
 };
 
 // ── MENSAJES DE ERROR (toast) ──────────────────────────────────────────────
@@ -1018,16 +1060,20 @@ async function abrirModalTeoria(zonaNombre) {
         let htmlTabla = '';
         if (data.tabla && data.tabla.length > 0) {
             htmlTabla = `<table class="tabla-teoria">
-                <tr><th>Inglés</th><th>Pronunciación</th><th>Español</th></tr>
-                ${data.tabla.map(f => `<tr><td>${f.en}</td><td>${f.pron}</td><td>${f.es}</td></tr>`).join('')}
+                <thead>
+                    <tr><th>Inglés</th><th>Pronunciación</th><th>Español</th></tr>
+                </thead>
+                <tbody>
+                    ${data.tabla.map(f => `<tr><td>${f.en}</td><td>${f.pron}</td><td>${f.es}</td></tr>`).join('')}
+                </tbody>
             </table>`;
         }
 
         const modalHTML = `
             <div class="modal-overlay" onclick="this.remove()">
                 <div class="modal-content" onclick="event.stopPropagation()">
-                    <h2>${data.titulo}</h2>
-                    <p>${data.explicacion}</p>
+                    <h2 class="modal-teoria-titulo">${data.titulo}</h2>
+                    <div class="teoria-texto">${data.explicacion}</div>
                     ${htmlTabla}
                     <button onclick="this.closest('.modal-overlay').remove()" class="btn-cerrar">Cerrar y Jugar</button>
                 </div>

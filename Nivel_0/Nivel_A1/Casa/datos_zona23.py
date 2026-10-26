@@ -9,7 +9,7 @@ SECCIONES = {
             ("house", "jáus", "casa"),
             ("kitchen", "kíchen", "cocina"),
             ("bedroom", "bédrum", "dormitorio"),
-            ("bathroom", "bázwum", "baño"),
+            ("bathroom", "bázrum", "baño"),
             ("living room", "líving rum", "sala"),
             ("dining room", "dáining rum", "comedor"),
             ("garden", "gárden", "jardín"),
@@ -31,12 +31,12 @@ def obtener_todas_las_palabras():
 
 TEORIA = {
     "titulo": "La Casa y sus Habitaciones (A1)",
-    "explicacion": "En inglés, 'house' es la construcción física, mientras que 'home' es el hogar (el concepto emocional). Fíjate en 'living room' (sala), literalmente 'cuarto para vivir'.",
+    "explicacion": "Diferencias importantes de concepto.\n\n• 'House' es la construcción física, mientras que 'home' es el hogar (el concepto emocional).\n• Fíjate en 'living room' (sala), que literalmente significa 'cuarto para vivir'.",
     "tabla": [
         {"en": "house", "pron": "jáus", "es": "casa"},
         {"en": "kitchen", "pron": "kíchen", "es": "cocina"},
         {"en": "bedroom", "pron": "bédrum", "es": "dormitorio"},
-        {"en": "bathroom", "pron": "bázwum", "es": "baño"},
+        {"en": "bathroom", "pron": "bázrum", "es": "baño"},
         {"en": "living room", "pron": "líving rum", "es": "sala"},
         {"en": "dining room", "pron": "dáining rum", "es": "comedor"},
         {"en": "garden", "pron": "gárden", "es": "jardín"},

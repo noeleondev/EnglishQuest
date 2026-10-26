@@ -31,7 +31,7 @@ def obtener_todas_las_palabras():
 
 TEORIA = {
     "titulo": "Preposiciones y Adverbios (A1)",
-    "explicacion": "Las preposiciones de lugar indican dónde está algo (in, on, under). Los adverbios de frecuencia indican cada cuánto ocurre algo (always, never). 'In front of' es una frase de tres palabras.",
+    "explicacion": "Lugar vs. Frecuencia.\n\n• Las preposiciones de lugar indican dónde está algo (in, on, under).\n• Los adverbios de frecuencia indican cada cuánto ocurre algo (always, never).\n• 'In front of' es una frase de tres palabras.",
     "tabla": [
         {"en": "in", "pron": "in", "es": "dentro de / en"},
         {"en": "on", "pron": "on", "es": "sobre / encima de"},

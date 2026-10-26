@@ -37,7 +37,7 @@ SECCIONES = {
             ("slow",       "slóu",      "lento"),
             ("easy",       "ísi",       "fácil"),
             ("difficult",  "dífikolt",  "difícil"),
-            ("young",      "yong",      "joven"),
+            ("young",      "llong",     "joven"),
             ("expensive",  "expénsiv",  "caro"),
         ],
     },
@@ -45,17 +45,15 @@ SECCIONES = {
 
 ORDEN_SECCIONES = ["s1", "s2"]
 
-
 def obtener_todas_las_palabras():
     todas = []
     for sid in ORDEN_SECCIONES:
         todas.extend(SECCIONES[sid]["palabras"])
     return todas
 
-
 TEORIA = {
     "titulo": "Adjetivos Básicos (Basic Adjectives)",
-    "explicacion": "En inglés, los adjetivos NO tienen género (no hay 'rojo/roja', solo 'red') y NO cambian en plural. Además, siempre van ANTES del sustantivo: 'Un carro rápido' es 'A fast car' (no 'a car fast').",
+    "explicacion": "En inglés, los adjetivos son muy sencillos.\n\n• NO tienen género (no hay 'rojo/roja', solo 'red').\n• NO cambian en plural.\n• Siempre van ANTES del sustantivo. Ejemplo: 'Un carro rápido' es 'A fast car' (no 'a car fast').",
     "tabla": [
         {"en": "Big", "pron": "big", "es": "grande"},
         {"en": "Small", "pron": "smol", "es": "pequeño"},

@@ -34,7 +34,6 @@ SECCIONES = {
 
 ORDEN_SECCIONES = ["s1"]
 
-
 def obtener_todas_las_palabras():
     todas = []
     for sid in ORDEN_SECCIONES:
@@ -43,7 +42,7 @@ def obtener_todas_las_palabras():
 
 TEORIA = {
     "titulo": "Objetos Comunes (Common Objects)",
-    "explicacion": "Este es vocabulario fundamental para el salón de clases y la oficina. Ojo con el falso amigo 'Carpet', que significa 'alfombra' (no carpeta, que es 'folder'). Y 'Phone' es el teléfono (viene de telephone).",
+    "explicacion": "Este es vocabulario fundamental para el salón de clases y la oficina.\n\n• Ojo con el falso amigo 'Carpet', que significa 'alfombra' (no carpeta, que es 'folder').\n• 'Phone' es el teléfono (viene de telephone).",
     "tabla": [
         {"en": "Table", "pron": "téibol", "es": "mesa"},
         {"en": "Chair", "pron": "cher", "es": "silla"},

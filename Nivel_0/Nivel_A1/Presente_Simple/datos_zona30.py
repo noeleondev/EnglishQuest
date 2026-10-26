@@ -16,7 +16,7 @@ def obtener_todos_los_ejercicios():
 
 TEORIA = {
     "titulo": "El Presente Simple (A1)",
-    "explicacion": "Se usa para hábitos y rutinas. Ojo: con He, She, It, el verbo lleva '-s' o '-es' al final. Para negar o preguntar, usamos el auxiliar Do/Does.",
+    "explicacion": "Hábitos y rutinas.\n\n• Se usa para acciones que hacemos regularmente.\n• Ojo: con He, She, It, el verbo lleva '-s' o '-es' al final (ej. She drinks).\n• Para negar o preguntar, usamos el auxiliar Do/Does.",
     "tabla": [
         {"en": "I play", "pron": "ái pléi", "es": "Yo juego"},
         {"en": "You play", "pron": "iú pléi", "es": "Tú juegas"},

@@ -12,7 +12,7 @@ SECCIONES = {
         "palabras": [
             ("apple", "ápol", "manzana"),
             ("banana", "banána", "plátano"),
-            ("orange", "óranchn", "naranja"),
+            ("orange", "óranch", "naranja"),
             ("grape", "gréip", "uva"),
             ("strawberry", "stróberi", "fresa"),
             ("watermelon", "uótermelon", "sandía"),
@@ -38,11 +38,11 @@ def obtener_todas_las_palabras():
 
 TEORIA = {
     "titulo": "Las Frutas en Inglés (A1)",
-    "explicacion": "Las frutas son vocabulario esencial. Fíjate en la pronunciación: en inglés americano, la 'r' al final de palabras como 'pear' o 'cherry' suena suave, casi como un 'er'. Recuerda que 'orange' empieza con sonido de vocal, por lo que diríamos 'an orange'.",
+    "explicacion": "Las frutas son vocabulario esencial.\n\n• Fíjate en la pronunciación: en inglés americano, la 'r' al final de palabras como 'pear' o 'cherry' suena suave.\n• Recuerda que 'orange' empieza con sonido de vocal, por lo que diríamos 'an orange'.",
     "tabla": [
         {"en": "apple", "pron": "ápol", "es": "manzana"},
         {"en": "banana", "pron": "banána", "es": "plátano"},
-        {"en": "orange", "pron": "óranchn", "es": "naranja"},
+        {"en": "orange", "pron": "óranch", "es": "naranja"},
         {"en": "grape", "pron": "gréip", "es": "uva"},
         {"en": "strawberry", "pron": "stróberi", "es": "fresa"},
         {"en": "watermelon", "pron": "uótermelon", "es": "sandía"},

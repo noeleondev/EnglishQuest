@@ -31,7 +31,7 @@ def obtener_todas_las_palabras():
 
 TEORIA = {
     "titulo": "Los Verbos Comunes (A1)",
-    "explicacion": "En inglés, los verbos en infinitivo siempre llevan la partícula 'to' adelante (ej. 'to eat'). Es la base para empezar a formar oraciones. La 'o' en 'to go' suena como 'ou'.",
+    "explicacion": "El infinitivo en inglés.\n\n• En inglés, los verbos en infinitivo siempre llevan la partícula 'to' adelante (ej. 'to eat').\n• Es la base para empezar a formar oraciones.\n• La 'o' en 'to go' suena como 'ou'.",
     "tabla": [
         {"en": "to be", "pron": "tu bi", "es": "ser/estar"},
         {"en": "to have", "pron": "tu jav", "es": "tener"},

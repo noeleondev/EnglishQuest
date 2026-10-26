@@ -70,7 +70,21 @@ ZONAS = {
     "A1 - Posesivos":   ("Nivel_0/Nivel_A1/Posesivos",   32), 
     "A1 - Can-Cant":    ("Nivel_0/Nivel_A1/Can_Cant",    33), 
     "A1 - Presente Cont.": ("Nivel_0/Nivel_A1/Presente_Continuo", 34), 
-    "A1 - Imperativo":     ("Nivel_0/Nivel_A1/Imperativo",        35), 
+    "A1 - Imperativo":     ("Nivel_0/Nivel_A1/Imperativo",        35),
+    "A2 - Viajes":      ("Nivel_0/Nivel_A2/Viajes",      36), 
+    "A2 - Compras":     ("Nivel_0/Nivel_A2/Compras",     37), 
+    "A2 - Salud":       ("Nivel_0/Nivel_A2/Salud",       38),
+    "A2 - Tecnologia":  ("Nivel_0/Nivel_A2/Tecnologia",  39), 
+    "A2 - Emociones":   ("Nivel_0/Nivel_A2/Emociones",   40), 
+    "A2 - Pasatiempos": ("Nivel_0/Nivel_A2/Pasatiempos", 41),
+    "A2 - Adjetivos Comp.": ("Nivel_0/Nivel_A2/Adjetivos_Comp",   42),
+    "A2 - Verbos Irreg.":   ("Nivel_0/Nivel_A2/Verbos_Irregulares",43),
+    "A2 - Pasado Regular": ("Nivel_0/Nivel_A2/Pasado_Regular", 44),
+    "A2 - Futuro":         ("Nivel_0/Nivel_A2/Futuro",         45),
+    "A2 - Comparativos":   ("Nivel_0/Nivel_A2/Comparativos",   46),
+    "A2 - Modales":        ("Nivel_0/Nivel_A2/Modales",        47),
+    "A2 - Adverbios Modo": ("Nivel_0/Nivel_A2/Adverbios_Modo", 48),
+    
 }
 
 app = Flask(__name__, static_folder=None)

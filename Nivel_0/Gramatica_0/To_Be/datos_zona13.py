@@ -25,6 +25,3 @@ TEORIA = {
         {"en": "They are", "pron": "déi ar", "es": "Ellos son / están"}
     ]
 }
-
-def obtener_todos_los_ejercicios():
-    return EJERCICIOS

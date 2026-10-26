@@ -25,17 +25,15 @@ SECCIONES = {
 
 ORDEN_SECCIONES = ["s1"]
 
-
 def obtener_todas_las_palabras():
     todas = []
     for sid in ORDEN_SECCIONES:
         todas.extend(SECCIONES[sid]["palabras"])
     return todas
 
-
 TEORIA = {
     "titulo": "Los Pronombres Personales (Subject Pronouns)",
-    "explicacion": "Los pronombres son el sujeto de la oración. En inglés, 'I' (yo) SIEMPRE se escribe con mayúscula. No existe distinción entre 'tú' y 'usted' (ambos son 'You'). Para cosas, animales o conceptos abstractos se usa 'It'.",
+    "explicacion": "Los pronombres son el sujeto de la oración.\n\n• En inglés, 'I' (yo) SIEMPRE se escribe con mayúscula.\n• No existe distinción entre 'tú' y 'usted' (ambos son 'You').\n• Para cosas, animales o conceptos abstractos se usa 'It'.",
     "tabla": [
         {"en": "I", "pron": "ái", "es": "yo"},
         {"en": "You", "pron": "iu", "es": "tú / usted / ustedes"},

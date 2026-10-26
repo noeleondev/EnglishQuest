@@ -15,7 +15,7 @@ def obtener_todos_los_ejercicios():
 
 TEORIA = {
     "titulo": "El Presente Continuo (A1)",
-    "explicacion": "Se usa para acciones que están ocurriendo en este preciso momento. Se forma con el verbo 'to be' (am/is/are) + el verbo principal con terminación '-ing' (leyendo = reading).",
+    "explicacion": "Acciones en este preciso momento.\n\n• Se usa para acciones que están ocurriendo ahora mismo.\n• Se forma con el verbo 'to be' (am/is/are) + el verbo principal con terminación '-ing' (leyendo = reading).\n• Ejemplo: I am eating (Estoy comiendo).",
     "tabla": [
         {"en": "I am eating", "pron": "ái am íting", "es": "Estoy comiendo"},
         {"en": "She is running", "pron": "shi is róning", "es": "Ella está corriendo"},

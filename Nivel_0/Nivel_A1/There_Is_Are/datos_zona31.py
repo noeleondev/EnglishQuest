@@ -14,7 +14,7 @@ def obtener_todos_los_ejercicios():
 
 TEORIA = {
     "titulo": "There is / There are (A1)",
-    "explicacion": "Equivale a 'Hay' en español. Usamos 'There is' para singular (una cosa) y 'There are' para plural (varias cosas).",
+    "explicacion": "El equivalente a 'Hay'.\n\n• Usamos 'There is' para singular (una cosa).\n• Usamos 'There are' para plural (varias cosas).\n• Es muy común usarlo para describir lugares.",
     "tabla": [
         {"en": "There is a book", "pron": "der is a buk", "es": "Hay un libro"},
         {"en": "There are books", "pron": "der ar buks", "es": "Hay libros"},

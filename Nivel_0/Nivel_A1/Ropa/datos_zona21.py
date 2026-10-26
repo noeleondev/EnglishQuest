@@ -14,7 +14,7 @@ SECCIONES = {
             ("skirt", "skert", "falda"),
             ("shoes", "shus", "zapatos"),
             ("socks", "soks", "calcetines"),
-            ("jacket", "yáket", "chaqueta"),
+            ("jacket", "lláket", "chaqueta"),
             ("coat", "cóut", "abrigo"),
             ("hat", "jat", "sombrero / gorra"),
             ("gloves", "glovs", "guantes"),
@@ -30,7 +30,7 @@ def obtener_todas_las_palabras():
 
 TEORIA = {
     "titulo": "La Ropa en Inglés (A1)",
-    "explicacion": "Cuidado con 'pants' (pantalones) y 'shorts' (pantalones cortos), siempre van en plural en inglés. 'Jacket' tiene un sonido de 'y' al inicio (yáket), no de 'j' fuerte.",
+    "explicacion": "Cuidado con los plurales y la pronunciación.\n\n• 'Pants' (pantalones) y 'shorts' (pantalones cortos) siempre van en plural en inglés.\n• 'Jacket' suena como 'lláket', no como una 'j' fuerte en español.",
     "tabla": [
         {"en": "shirt", "pron": "shert", "es": "camisa"},
         {"en": "t-shirt", "pron": "tí-shert", "es": "camiseta"},
@@ -40,7 +40,7 @@ TEORIA = {
         {"en": "skirt", "pron": "skert", "es": "falda"},
         {"en": "shoes", "pron": "shus", "es": "zapatos"},
         {"en": "socks", "pron": "soks", "es": "calcetines"},
-        {"en": "jacket", "pron": "yáket", "es": "chaqueta"},
+        {"en": "jacket", "pron": "lláket", "es": "chaqueta"},
         {"en": "coat", "pron": "cóut", "es": "abrigo"},
         {"en": "hat", "pron": "jat", "es": "sombrero / gorra"},
         {"en": "gloves", "pron": "glovs", "es": "guantes"},

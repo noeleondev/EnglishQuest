@@ -15,7 +15,7 @@ def obtener_todos_los_ejercicios():
 
 TEORIA = {
     "titulo": "Can / Can't (A1)",
-    "explicacion": "Se usa para expresar habilidad (saber hacer algo) o permiso. Es un verbo modal, por lo que el verbo que lo acompaña siempre va en forma base (sin 'to'). Su negativo es 'cannot' o su contracción 'can't'.",
+    "explicacion": "Habilidad o permiso.\n\n• Se usa para expresar habilidad (saber hacer algo) o pedir permiso.\n• Es un verbo modal, por lo que el verbo que lo acompaña siempre va en forma base (sin 'to').\n• Su negativo es 'cannot' o su contracción 'can't'.",
     "tabla": [
         {"en": "I can", "pron": "ái can", "es": "Yo puedo"},
         {"en": "You can", "pron": "iú can", "es": "Tú puedes"},

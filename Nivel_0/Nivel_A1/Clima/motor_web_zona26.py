@@ -2,17 +2,18 @@ import random
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
-import datos_zona26 as datos
+import datos_zona26 as datos  
+
+_PALABRAS = datos.obtener_todas_las_palabras().copy()
+random.shuffle(_PALABRAS)
 
 def generar_pregunta(fase, num):
-    palabras = datos.obtener_todas_las_palabras().copy()
-    random.shuffle(palabras)
-    palabra = palabras[num % len(palabras)]
+    palabra = _PALABRAS[num % len(_PALABRAS)]
     ingles, pronun, traduccion = palabra
 
     if fase == "f1":
         opciones = [ingles]
-        otras = [p[0] for p in palabras if p[0] != ingles]
+        otras = [p[0] for p in _PALABRAS if p[0] != ingles]
         opciones += random.sample(otras, 3)
         random.shuffle(opciones)
         return {"id": f"z26-{num}", "tipo": "opcion_multiple", "pregunta": f"¿Cuál es '{traduccion}'?", "opciones": opciones, "respuesta_correcta": ingles, "contexto": "F1"}
@@ -27,5 +28,6 @@ def generar_pregunta(fase, num):
             return {"id": f"z26-{num}", "tipo": "escribir", "pregunta": f"👹 PRODUCE: {traduccion}", "respuesta_correcta": ingles, "contexto": "JEFE"}
 
 def generar_ronda_completa(fase):
-    total = len(datos.obtener_todas_las_palabras())
+    random.shuffle(_PALABRAS) 
+    total = len(_PALABRAS)
     return [generar_pregunta(fase, i) for i in range(5 if fase == "jefe" else total)]

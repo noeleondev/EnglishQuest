@@ -16,7 +16,7 @@ TEORIA = {
     "tabla": [
         {"en": "This", "pron": "dis", "es": "Este / Esta (cerca)"},
         {"en": "That", "pron": "dat", "es": "Ese / Esa (lejos)"},
-        {"en": "These", "pron": "dis", "es": "Estos / Estas (cerca)"},
+        {"en": "These", "pron": "diis", "es": "Estos / Estas (cerca)"},
         {"en": "Those", "pron": "dous", "es": "Esos / Esas (lejos)"}
     ]
 }

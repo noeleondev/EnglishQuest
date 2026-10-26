@@ -16,7 +16,7 @@ TEORIA = {
     "tabla": [
         {"en": "What", "pron": "uát", "es": "Qué"},
         {"en": "Who", "pron": "ju", "es": "Quién"},
-        {"en": "Where", "pron": "uérd", "es": "Dónde"},
+        {"en": "Where", "pron": "uér", "es": "Dónde"},
         {"en": "When", "pron": "uén", "es": "Cuándo"},
         {"en": "Why", "pron": "uái", "es": "Por qué"},
         {"en": "How", "pron": "jáu", "es": "Cómo"}

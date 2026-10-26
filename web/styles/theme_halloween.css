@@ -1,139 +1,130 @@
 /* ═══════════════════════════════════════════════════════════════════════════
-   theme_halloween.css — Tema Halloween 🎃
-   Paleta: fondo morado oscuro, acentos naranja calabaza, toques verde lima
+   theme_halloween.css — v2 (Poción Mágica / Spooky Glow)
    ═══════════════════════════════════════════════════════════════════════════ */
 
 :root {
-  /* ── Tipografía ── */
   --font-body:    'Inter', system-ui, sans-serif;
   --font-display: 'JetBrains Mono', monospace;
 
-  /* ── Fondos ── */
-  --bg-base:          #0e0618;
-  --bg-panel:         #130920;
-  --bg-panel-header:  #0f0718;
-  --bg-header:        #0b0515;
-  --bg-surface:       #1a0d2b;
-  --bg-surface-active:#211040;
+  /* Fondos morados profundos */
+  --bg-base:          #0a0312;
+  --bg-panel:         #12051f;
+  --bg-panel-header:  #0d0317;
+  --bg-header:        #08020e;
+  --bg-surface:       #1c0a2e;
+  --bg-surface-active:#2a0f45;
 
-  /* ── Bordes ── */
-  --border: #2d1a45;
+  --border: #3b1d5c;
 
-  /* ── Texto ── */
-  --text-primary:   #f5e6ff;
-  --text-secondary: #c4a0d8;
-  --text-muted:     #6b4a85;
+  --text-primary:   #f8ebff;
+  --text-secondary: #cfa8e6;
+  --text-muted:     #7a4f9c;
 
-  /* ── Acento principal: naranja calabaza ── */
+  /* Acento: Naranja Calabaza */
   --accent: #ff7b00;
+  --glow-accent:        0 0 10px rgba(255, 123, 0, 0.5);
+  --glow-accent-strong: 0 0 25px rgba(255, 123, 0, 0.8), 0 0 5px rgba(255, 123, 0, 0.6);
 
-  /* ── Efectos de brillo ── */
-  --glow-accent:        0 0  8px rgba(255, 123, 0, 0.4);
-  --glow-accent-strong: 0 0 20px rgba(255, 123, 0, 0.7), 0 0 6px rgba(255, 123, 0, 0.4);
-
-  /* ── Colores semánticos ── */
-  --color-success: #a8ff3e;   /* verde lima espeluznante */
+  --color-success: #a8ff3e;
   --color-warning: #ffe066;
   --color-danger:  #ff2d55;
   --color-fire:    #ff4500;
 
-  /* ── Filtro iconos completos ── */
-  --filter-complete: drop-shadow(0 0 6px #a8ff3e);
-
-  /* ── Decoraciones ── */
-  --deco-duration: 5s;
+  --filter-complete: drop-shadow(0 0 8px #a8ff3e);
 }
 
-/* Scrollbar morado */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #2d1a45 #0e0618;
-}
-
-*::-webkit-scrollbar       { width: 6px; height: 6px; }
-*::-webkit-scrollbar-track { background: #0e0618; }
-*::-webkit-scrollbar-thumb { background: #2d1a45; border-radius: 3px; }
-*::-webkit-scrollbar-thumb:hover { background: #ff7b0055; }
-
-/* Fondo con textura sutil de telaraña */
+/* Fondo con niebla mágica */
 body[data-theme="theme_halloween"] {
   background-image:
-    radial-gradient(ellipse at 10% 20%, rgba(255, 123, 0, 0.04) 0%, transparent 50%),
-    radial-gradient(ellipse at 90% 80%, rgba(168, 0, 255, 0.06) 0%, transparent 50%);
+    radial-gradient(circle at 15% 20%, rgba(255, 123, 0, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 85% 80%, rgba(168, 0, 255, 0.08) 0%, transparent 40%);
 }
 
-/* Header con sombra naranja */
-body[data-theme="theme_halloween"] .app-header {
-  box-shadow: 0 2px 20px rgba(255, 123, 0, 0.15);
+/* ── TARJETAS: Estilo Lápida / Madera Oscura ── */
+body[data-theme="theme_halloween"] .zone-card, 
+body[data-theme="theme_halloween"] .phase-card,
+body[data-theme="theme_halloween"] .stat-card {
+  border-radius: 12px !important;
+  border: 1px solid rgba(255, 123, 0, 0.3) !important;
+  background: linear-gradient(145deg, #1c0a2e, #12051f) !important;
+  box-shadow: inset 0 0 20px rgba(255, 123, 0, 0.05), 0 4px 10px rgba(0,0,0,0.6) !important;
+  transition: all 0.3s ease;
 }
 
-/* Zona activa: borde naranja izquierdo */
-body[data-theme="theme_halloween"] .zone-card.zone-active {
-  border-left: 3px solid var(--accent);
+/* Hover: Brillo fantasmal */
+body[data-theme="theme_halloween"] .zone-card:hover:not(.zone-locked),
+body[data-theme="theme_halloween"] .phase-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent) !important;
+  box-shadow: inset 0 0 20px rgba(255, 123, 0, 0.2), 0 0 20px rgba(255, 123, 0, 0.4) !important;
 }
 
-/* Fases con colores temáticos */
-body[data-theme="theme_halloween"] .phase-card[data-phase="f1"]   { border-left: 3px solid #ff7b00; }
-body[data-theme="theme_halloween"] .phase-card[data-phase="f2"]   { border-left: 3px solid #cc00ff; }
-body[data-theme="theme_halloween"] .phase-card[data-phase="f3"]   { border-left: 3px solid #a8ff3e; }
-body[data-theme="theme_halloween"] .phase-card[data-phase="jefe"] { border-left: 3px solid #ff2d55; }
+body[data-theme="theme_halloween"] .zone-card-name,
+body[data-theme="theme_halloween"] .phase-name {
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(255, 123, 0, 0.6);
+}
 
-/* XP badge con brillo naranja */
+/* ── BOTÓN JUGAR: Efecto Poción / Calabaza ── */
+body[data-theme="theme_halloween"] .btn-primary {
+  background: linear-gradient(180deg, #ff7b00, #cc4400);
+  border: 1px solid #ffaa00;
+  box-shadow: 0 0 15px rgba(255, 123, 0, 0.5);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+body[data-theme="theme_halloween"] .btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+body[data-theme="theme_halloween"] .btn-primary:hover::before {
+  opacity: 1;
+}
+
+body[data-theme="theme_halloween"] .btn-primary:hover {
+  box-shadow: 0 0 25px rgba(255, 123, 0, 0.8), 0 0 10px rgba(255, 170, 0, 0.5);
+}
+
+/* ── BARRAS DE PROGRESO: Ectoplasma ── */
+body[data-theme="theme_halloween"] .zone-progress-fill,
+body[data-theme="theme_halloween"] .pregunta-progress-bar {
+  background: linear-gradient(90deg, #ff7b00, #a8ff3e);
+  box-shadow: 0 0 10px #a8ff3e;
+}
+
+/* ── CABECERA Y LOGO ── */
+body[data-theme="theme_halloween"] .header-title {
+  text-shadow: 0 0 10px rgba(255, 123, 0, 0.7);
+}
+
 body[data-theme="theme_halloween"] .xp-badge {
-  box-shadow: 0 0 12px rgba(255, 123, 0, 0.35);
+  border-color: var(--accent);
+  background: rgba(255, 123, 0, 0.1);
+  box-shadow: inset 0 0 10px rgba(255, 123, 0, 0.2), 0 0 10px rgba(255, 123, 0, 0.3);
 }
 
-/* Animación de parpadeo en el icono del header */
-body[data-theme="theme_halloween"] .header-icon {
-  animation: flicker 4s steps(1) infinite;
+/* Animación de flotación para decoraciones (fantasmas/murciélagos) */
+@keyframes float-spooky {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(10deg); }
 }
 
-@keyframes flicker {
-  0%, 95%, 100% { opacity: 1; }
-  96%           { opacity: 0.3; }
-  97%           { opacity: 1; }
-  98%           { opacity: 0.5; }
-  99%           { opacity: 1; }
+body[data-theme="theme_halloween"] .theme-deco {
+  animation: float-spooky var(--deco-duration, 5s) ease-in-out infinite;
+  opacity: 0.2;
+  filter: drop-shadow(0 0 5px #ff7b00);
 }
 
-/* Brillo en hover de zona */
-body[data-theme="theme_halloween"] .zone-card:hover:not(.zone-locked) {
-  box-shadow: 0 0 14px rgba(255, 123, 0, 0.45);
-}
-
-/* Welcome card con borde naranja */
-body[data-theme="theme_halloween"] .welcome-card {
-  border: 1px solid rgba(255, 123, 0, 0.2);
-  border-radius: 14px;
-  background: rgba(255, 123, 0, 0.04);
-  padding: 2rem;
-}
-
-/* ── Overrides del modal y dropdown para tema Halloween ──────────────────── */
+/* Modal oscuro */
 body[data-theme="theme_halloween"] .modal-box {
-  box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 30px rgba(255, 123, 0, 0.25);
-  border-color: rgba(255, 123, 0, 0.35);
-}
-
-body[data-theme="theme_halloween"] .modal-tab.active {
-  background: #ff7b00;
-  border-color: #ff7b00;
-}
-
-body[data-theme="theme_halloween"] .form-input:focus {
-  border-color: #ff7b00;
-  box-shadow: 0 0 8px rgba(255, 123, 0, 0.4);
-}
-
-body[data-theme="theme_halloween"] .avatar-btn.selected {
-  border-color: #ff7b00;
-  box-shadow: 0 0 8px rgba(255, 123, 0, 0.5);
-}
-
-body[data-theme="theme_halloween"] .user-btn:not(.user-btn-empty) {
+  box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 40px rgba(255, 123, 0, 0.2);
   border-color: rgba(255, 123, 0, 0.4);
-}
-
-body[data-theme="theme_halloween"] .footer-watermark {
-  color: rgba(255, 123, 0, 0.5);
 }

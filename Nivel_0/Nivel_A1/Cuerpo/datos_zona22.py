@@ -31,7 +31,7 @@ def obtener_todas_las_palabras():
 
 TEORIA = {
     "titulo": "El Cuerpo Humano (A1)",
-    "explicacion": "La 'h' en 'head', 'hair' y 'hand' se pronuncia como una 'j' suave (aspirada). El plural de 'foot' (pie) es irregular: se dice 'feet'.",
+    "explicacion": "Presta atención a los sonidos aspirados y plurales.\n\n• La 'h' en 'head', 'hair' y 'hand' se pronuncia como una 'j' suave (aspirada).\n• El plural de 'foot' (pie) es irregular: se dice 'feet'.",
     "tabla": [
         {"en": "head", "pron": "jed", "es": "cabeza"},
         {"en": "hair", "pron": "jer", "es": "cabello"},

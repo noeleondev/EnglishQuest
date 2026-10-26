@@ -33,7 +33,7 @@ SECCIONES = {
             ("You are welcome",      "iu ar uélcom",        "de nada"),
             ("Excuse me",            "exkiús mi",           "disculpe"),
             ("I am sorry",           "ái am sóri",          "lo siento"),
-            ("What is your name?",   "uát is iór néim",     "¿cómo te llamas?"),
+            ("What is your name?",   "uát is llór néim",    "¿cómo te llamas?"),
             ("My name is...",        "mái néim is",         "mi nombre es..."),
             ("Nice to meet you",     "náis tu mit iu",      "mucho gusto"),
         ],
@@ -41,7 +41,6 @@ SECCIONES = {
 }
 
 ORDEN_SECCIONES = ["s1", "s2"]
-
 
 def obtener_todas_las_palabras():
     todas = []
@@ -51,7 +50,7 @@ def obtener_todas_las_palabras():
 
 TEORIA = {
     "titulo": "Saludos y Despedidas (Greetings)",
-    "explicacion": "En inglés, la hora del día determina el saludo. 'Good morning' se usa antes del mediodía, 'Good afternoon' de mediodía a 6 pm, y 'Good evening' después de 6 pm. Para despedirte por la noche dices 'Good night'. 'How are you?' es la pregunta estándar.",
+    "explicacion": "En inglés, la hora del día determina el saludo.\n\n• 'Good morning' se usa antes del mediodía.\n• 'Good afternoon' de mediodía a 6 pm.\n• 'Good evening' después de 6 pm.\n• Para despedirte por la noche dices 'Good night'.\n• 'How are you?' es la pregunta estándar para preguntar cómo estás.",
     "tabla": [
         {"en": "Hello", "pron": "jelóu", "es": "hola"},
         {"en": "Good morning", "pron": "gud mórnin", "es": "buenos días"},

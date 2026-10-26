@@ -17,10 +17,10 @@ def obtener_todos_los_ejercicios():
 
 TEORIA = {
     "titulo": "Adjetivos Posesivos (A1)",
-    "explicacion": "Indican pertenencia (mi, tu, su, nuestro). A diferencia del español, en inglés el adjetivo posesivo concuerda con el dueño, no con la cosa poseída. 'His' es de él, 'Her' es de ella, 'Its' es de una cosa o animal.",
+    "explicacion": "Indican pertenencia (mi, tu, su, nuestro).\n\n• A diferencia del español, el adjetivo posesivo concuerda con el dueño, no con la cosa poseída.\n• 'His' es de él, 'Her' es de ella.\n• 'Its' es de una cosa o animal.",
     "tabla": [
         {"en": "My", "pron": "mái", "es": "Mi"},
-        {"en": "Your", "pron": "iór", "es": "Tu"},
+        {"en": "Your", "pron": "llór", "es": "Tu"},
         {"en": "His", "pron": "jis", "es": "Su (de él)"},
         {"en": "Her", "pron": "jer", "es": "Su (de ella)"},
         {"en": "Its", "pron": "its", "es": "Su (de cosa/animal)"},
